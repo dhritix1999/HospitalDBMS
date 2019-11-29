@@ -37,14 +37,14 @@ public class Menu extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuFile = new javax.swing.JMenu();
+        menuItemLogout = new javax.swing.JMenuItem();
+        menuItemExit = new javax.swing.JMenuItem();
         menuPatient = new javax.swing.JMenu();
         menuItemAddPat = new javax.swing.JMenuItem();
         menuItemUpdDelPat = new javax.swing.JMenuItem();
         menuDoctor = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuItemAddDoc = new javax.swing.JMenuItem();
         menuItemUpdDelDoc = new javax.swing.JMenuItem();
         menuWard = new javax.swing.JMenu();
         menuItemAddWard = new javax.swing.JMenuItem();
@@ -63,32 +63,32 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 
-        jMenu1.setText("File");
-        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuFile.setText("File");
+        menuFile.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jdbcgui/logout.png"))); // NOI18N
-        jMenuItem1.setText("Logout");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemLogout.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jdbcgui/logout.png"))); // NOI18N
+        menuItemLogout.setText("Logout");
+        menuItemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItemLogoutActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuFile.add(menuItemLogout);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jdbcgui/close.png"))); // NOI18N
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuItemExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemExit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jdbcgui/close.png"))); // NOI18N
+        menuItemExit.setText("Exit");
+        menuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuItemExitActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuFile.add(menuItemExit);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuFile);
 
         menuPatient.setText("Patient");
         menuPatient.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -118,9 +118,14 @@ public class Menu extends javax.swing.JFrame {
         menuDoctor.setText("Doctor");
         menuDoctor.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem3.setText("Add New Doctor");
-        menuDoctor.add(jMenuItem3);
+        menuItemAddDoc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemAddDoc.setText("Add New Doctor");
+        menuItemAddDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAddDocActionPerformed(evt);
+            }
+        });
+        menuDoctor.add(menuItemAddDoc);
 
         menuItemUpdDelDoc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         menuItemUpdDelDoc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -148,6 +153,11 @@ public class Menu extends javax.swing.JFrame {
 
         menuItemUpdDelWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         menuItemUpdDelWard.setText("Update/Delete Ward");
+        menuItemUpdDelWard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemUpdDelWardActionPerformed(evt);
+            }
+        });
         menuWard.add(menuItemUpdDelWard);
 
         jMenuBar1.add(menuWard);
@@ -210,16 +220,16 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuItemUpdDelPatActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLogoutActionPerformed
         // TODO add your handling code here:
         (new LoginForm()).setVisible(true);
         this.dispose(); // the Menu form is disposed ONLY when the currently logged in user logs out
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuItemLogoutActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExitActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuItemExitActionPerformed
 
     private void menuItemAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddUserActionPerformed
         // TODO add your handling code here:
@@ -236,22 +246,30 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemUpdDelDocActionPerformed
 
     private void menuItemAddWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddWardActionPerformed
-        // TODO add your handling code here:
+        (new AddWard()).setVisible(true);
     }//GEN-LAST:event_menuItemAddWardActionPerformed
+
+    private void menuItemAddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddDocActionPerformed
+        (new AddDoctor()).setVisible(true);
+    }//GEN-LAST:event_menuItemAddDocActionPerformed
+
+    private void menuItemUpdDelWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelWardActionPerformed
+        (new UpdateDeleteWard()).setVisible(true);
+    }//GEN-LAST:event_menuItemUpdDelWardActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu menuDoctor;
+    private javax.swing.JMenu menuFile;
+    private javax.swing.JMenuItem menuItemAddDoc;
     private javax.swing.JMenuItem menuItemAddPat;
     private javax.swing.JMenuItem menuItemAddUser;
     private javax.swing.JMenuItem menuItemAddWard;
+    private javax.swing.JMenuItem menuItemExit;
+    private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenuItem menuItemUpdDelDoc;
     private javax.swing.JMenuItem menuItemUpdDelPat;
     private javax.swing.JMenuItem menuItemUpdDelUser;
