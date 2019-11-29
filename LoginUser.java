@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author wissam
- */
+
 public class LoginUser {
     String username;
     String Name; 
@@ -17,7 +14,6 @@ public class LoginUser {
         username = uuser;
         Name = uname;
         type = utype;
-     //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

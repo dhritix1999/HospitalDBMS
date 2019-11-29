@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class UpdateandDeleteDept extends javax.swing.JFrame {
+public class UpdateandDeleteDoctor extends javax.swing.JFrame {
    
    
 
@@ -26,7 +26,7 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
     /**
      * Creates new form UpdateandDeleteDept
      */
-    public UpdateandDeleteDept() {
+    public UpdateandDeleteDoctor() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -212,7 +212,7 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
                             .addComponent(ERRORdeptno, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LBdeptname, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(LBdeptname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TXTdeptname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ERRORdeptname, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -246,7 +246,7 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
             currentDeptNo = rsDept.getInt("deptno");
             EnableDisableButtons();
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
@@ -264,7 +264,7 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
                 btnNext.setEnabled(true);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -279,7 +279,7 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
                 populateFields();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
    private void MovePrevious(){
@@ -292,7 +292,7 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
    
@@ -304,7 +304,7 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
                }
            }
        } catch (Exception ex) {
-           Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null,ex);
+           Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null,ex);
        }
        return false;
    }
@@ -510,20 +510,21 @@ public class UpdateandDeleteDept extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateandDeleteDept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateandDeleteDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateandDeleteDept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateandDeleteDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateandDeleteDept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateandDeleteDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateandDeleteDept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateandDeleteDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateandDeleteDept().setVisible(true);
+                new UpdateandDeleteDoctor().setVisible(true);
             }
         });
     }

@@ -40,14 +40,18 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuPatient = new javax.swing.JMenu();
+        menuItemAddPat = new javax.swing.JMenuItem();
+        menuItemUpdDelPat = new javax.swing.JMenuItem();
+        menuDoctor = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        Department = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        menuItemUpdDelDoc = new javax.swing.JMenuItem();
+        menuWard = new javax.swing.JMenu();
+        menuItemAddWard = new javax.swing.JMenuItem();
+        menuItemUpdDelWard = new javax.swing.JMenuItem();
         menuUser = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menuItemAddUser = new javax.swing.JMenuItem();
+        menuItemUpdDelUser = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -86,68 +90,90 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Employee");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuPatient.setText("Patient");
+        menuPatient.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemAddPat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemAddPat.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemAddPat.setText("Add New Patient");
+        menuItemAddPat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAddPatActionPerformed(evt);
+            }
+        });
+        menuPatient.add(menuItemAddPat);
+
+        menuItemUpdDelPat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemUpdDelPat.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemUpdDelPat.setText("Update/Delete Patient");
+        menuItemUpdDelPat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemUpdDelPatActionPerformed(evt);
+            }
+        });
+        menuPatient.add(menuItemUpdDelPat);
+
+        jMenuBar1.add(menuPatient);
+
+        menuDoctor.setText("Doctor");
+        menuDoctor.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem3.setText("Add New Employee");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem3.setText("Add New Doctor");
+        menuDoctor.add(jMenuItem3);
+
+        menuItemUpdDelDoc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemUpdDelDoc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemUpdDelDoc.setText("Update/Delete Doctor");
+        menuItemUpdDelDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                menuItemUpdDelDocActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        menuDoctor.add(menuItemUpdDelDoc);
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem5.setText("Update/Delete Employee");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(menuDoctor);
+
+        menuWard.setText("Ward");
+        menuWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        menuItemAddWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemAddWard.setText("Add New Ward");
+        menuItemAddWard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuItemAddWardActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        menuWard.add(menuItemAddWard);
 
-        jMenuBar1.add(jMenu2);
+        menuItemUpdDelWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemUpdDelWard.setText("Update/Delete Ward");
+        menuWard.add(menuItemUpdDelWard);
 
-        Department.setText("Department");
-        Department.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem7.setText("Update/Delete Departmet");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        Department.add(jMenuItem7);
-
-        jMenuBar1.add(Department);
+        jMenuBar1.add(menuWard);
 
         menuUser.setText("User");
         menuUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem4.setText("Add New User");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuItemAddUser.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemAddUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemAddUser.setText("Add New User");
+        menuItemAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuItemAddUserActionPerformed(evt);
             }
         });
-        menuUser.add(jMenuItem4);
+        menuUser.add(menuItemAddUser);
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jMenuItem6.setText("Update/Delete User");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        menuItemUpdDelUser.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemUpdDelUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemUpdDelUser.setText("Update/Delete User");
+        menuItemUpdDelUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                menuItemUpdDelUserActionPerformed(evt);
             }
         });
-        menuUser.add(jMenuItem6);
+        menuUser.add(menuItemUpdDelUser);
 
         jMenuBar1.add(menuUser);
 
@@ -173,16 +199,16 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void menuItemAddPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddPatActionPerformed
         // TODO add your handling code here:
-        (new AddEmployee()).setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+        (new AddPatient()).setVisible(true);
+    }//GEN-LAST:event_menuItemAddPatActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void menuItemUpdDelPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelPatActionPerformed
         // TODO add your handling code here:
-        (new UpdateDeleteEmployee()).setVisible(true);
+        (new UpdateDeletePatient()).setVisible(true);
 
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_menuItemUpdDelPatActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -195,35 +221,43 @@ public class Menu extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menuItemAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddUserActionPerformed
         // TODO add your handling code here:
         (new AddNewLoginUser()).setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_menuItemAddUserActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void menuItemUpdDelUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelUserActionPerformed
         // TODO add your handling code here:
         (new UpdateDeleteLoginUser()).setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_menuItemUpdDelUserActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        (new UpdateandDeleteDept()).setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void menuItemUpdDelDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelDocActionPerformed
+        (new UpdateandDeleteDoctor()).setVisible(true);
+    }//GEN-LAST:event_menuItemUpdDelDocActionPerformed
+
+    private void menuItemAddWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddWardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemAddWardActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Department;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenu menuDoctor;
+    private javax.swing.JMenuItem menuItemAddPat;
+    private javax.swing.JMenuItem menuItemAddUser;
+    private javax.swing.JMenuItem menuItemAddWard;
+    private javax.swing.JMenuItem menuItemUpdDelDoc;
+    private javax.swing.JMenuItem menuItemUpdDelPat;
+    private javax.swing.JMenuItem menuItemUpdDelUser;
+    private javax.swing.JMenuItem menuItemUpdDelWard;
+    private javax.swing.JMenu menuPatient;
     private javax.swing.JMenu menuUser;
+    private javax.swing.JMenu menuWard;
     // End of variables declaration//GEN-END:variables
 }

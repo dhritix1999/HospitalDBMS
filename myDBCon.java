@@ -12,10 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author wissam
- */
+
 public class myDBCon {
 
     String DBURL = "jdbc:oracle:thin:@coeoracle.aus.edu:1521:orcl";

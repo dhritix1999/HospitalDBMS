@@ -275,7 +275,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
 
             EnableDisableButtons();
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -292,7 +292,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
                 btnNext.setEnabled(true);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -490,7 +490,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
                 populateFields();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -503,7 +503,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
                 populateFields();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateDeleteEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
