@@ -328,7 +328,7 @@ public class AddDoctor extends javax.swing.JFrame {
                         + txtDocId.getText().trim() + ", "
                         + "'" + txtFname.getText().toUpperCase() 
                         + "', '" + txtLname.getText().toUpperCase() 
-                        + "', '"  + txtSpec.getText()  
+                        + "', '"  + txtSpec.getText().toUpperCase()
                         + "', "  + txtSalary.getText() + ")";
 
                 int result = dbCon.executePrepared(prepSQL);
