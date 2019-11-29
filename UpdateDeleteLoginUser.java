@@ -243,7 +243,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
         try {
             String str;
             // populate deptno field
-            rs = dbCon.executeStatement("SELECT Username, Name, l.Type, Description FROM LoginUsers l join UserType u on  l.type = u.type ORDER BY username ASC");
+            rs = dbCon.executeStatement("SELECT Username, Name, l.Type, Description FROM users l join UserType u on  l.type = u.type ORDER BY username ASC");
 
 //populate usertype combo
             ResultSet rsUserType = dbCon.executeStatement("SELECT Type, Description FROM UserType ORDER BY Type");
