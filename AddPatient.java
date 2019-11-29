@@ -23,21 +23,14 @@ public class AddPatient extends javax.swing.JFrame {
         lblFnameError.setVisible(false);
         lblLnameError.setVisible(false);
         lblDateOfBirthError.setVisible(false);
-        lblSalaryError.setVisible(false);
-        lblCommError.setVisible(false);
 
-        try {//populate mgr and deptno combo boxes 
-            // populate valid mgr numbers 
+
+        try {
             dbCon = new myDBCon();
-            rs = dbCon.executeStatement("SELECT empno FROM emp ORDER BY empno ASC");
-            // populate mgr combo box
+            rs = dbCon.executeStatement("SELECT ward_id FROM ward ORDER BY ward_id ASC");
+            // populate ward combo box
             while (rs.next()) {
-                cmbWard.addItem(rs.getString("empno"));
-            }
-            // get and populate valid department numbers 
-            rs = dbCon.executeStatement("SELECT DISTINCT deptno, dname FROM dept ORDER BY deptno ASC");
-            while (rs.next()) {
-                cmbDeptno.addItem(rs.getString("deptno"));
+                cmbWard.addItem(rs.getString("ward_id"));
             }
             rs.close();
         } catch (SQLException e) {
@@ -64,7 +57,7 @@ public class AddPatient extends javax.swing.JFrame {
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
         cmbWard = new javax.swing.JComboBox<>();
-        btnAddNewEmp = new javax.swing.JButton();
+        btnAddNewPat = new javax.swing.JButton();
         lblPatIdError = new javax.swing.JLabel();
         lblLnameError = new javax.swing.JLabel();
         lblFnameError = new javax.swing.JLabel();
@@ -106,11 +99,11 @@ public class AddPatient extends javax.swing.JFrame {
 
         cmbWard.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        btnAddNewEmp.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnAddNewEmp.setText("Add New");
-        btnAddNewEmp.addActionListener(new java.awt.event.ActionListener() {
+        btnAddNewPat.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnAddNewPat.setText("Add New");
+        btnAddNewPat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddNewEmpActionPerformed(evt);
+                btnAddNewPatActionPerformed(evt);
             }
         });
 
@@ -150,29 +143,30 @@ public class AddPatient extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnAddNewEmp)
-                                .addComponent(txtFname, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addComponent(txtLname)
-                                .addComponent(ftxtDateOfBirth))
-                            .addComponent(cmbWard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblFnameError, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(lblLnameError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblDateOfBirthError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtPatId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPatIdError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtFname, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addComponent(txtLname)
+                        .addComponent(ftxtDateOfBirth))
+                    .addComponent(cmbWard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPatId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblFnameError, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(lblLnameError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDateOfBirthError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPatIdError, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(181, 181, 181))
+                .addContainerGap(311, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(181, 181, 181))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAddNewPat)
+                        .addGap(311, 311, 311))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,8 +197,8 @@ public class AddPatient extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbWard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddNewEmp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAddNewPat)
                 .addContainerGap())
         );
 
@@ -244,10 +238,7 @@ public class AddPatient extends javax.swing.JFrame {
         lblLnameError.setVisible(false);
         lblDateOfBirthError.setText("");
         lblDateOfBirthError.setVisible(false);
-        lblSalaryError.setText("");
-        lblSalaryError.setVisible(false);
-        lblCommError.setText("");
-        lblCommError.setVisible(false);
+
     }
 
     // validate all user entry before sending new employee details to DB
@@ -265,21 +256,21 @@ public class AddPatient extends javax.swing.JFrame {
             result = false;
         }
 
-        if (txtFname.getText().trim().isEmpty() || (txtFname.getText().trim().length() > 10)) {
+        if (txtFname.getText().trim().isEmpty() || (txtFname.getText().trim().length() > 30)) {
             if (txtFname.getText().trim().isEmpty()) {
                 lblFnameError.setText("Invalid. Cannot be empty.");
-            } else if ((txtFname.getText().trim().length() > 10)) {
-                lblFnameError.setText("Invalid. Must be < 10 chars.");
+            } else if ((txtFname.getText().trim().length() > 30)) {
+                lblFnameError.setText("Invalid. Must be <= 30 chars.");
             }
             lblFnameError.setVisible(true);
             result = false;
         }
 
-        if (txtLname.getText().trim().isEmpty() || (txtLname.getText().trim().length() > 9)) {
+        if (txtLname.getText().trim().isEmpty() || (txtLname.getText().trim().length() > 30)) {
             if (txtLname.getText().trim().isEmpty()) {
                 lblLnameError.setText("Invalid. Cannot be empty.");
-            } else if (txtLname.getText().trim().length() > 9) {
-                lblLnameError.setText("Invalid. Must be < 9 chars.");
+            } else if (txtLname.getText().trim().length() > 30) {
+                lblLnameError.setText("Invalid. Must be <= 30 chars.");
             }
             lblLnameError.setVisible(true);
             result = false;
@@ -291,26 +282,6 @@ public class AddPatient extends javax.swing.JFrame {
             result = false;
         }
 
-        if (txtSalary.getText().trim().isEmpty() || !(isInteger(txtSalary.getText().trim()) || isDouble(txtSalary.getText().trim()))) {
-            if (txtSalary.getText().trim().isEmpty()) {
-                lblSalaryError.setText("Invalid. Cannot be empty.");
-            } else if (!(isInteger(txtSalary.getText().trim()) || isDouble(txtSalary.getText().trim()))) {
-                lblSalaryError.setText("Invalid. Must be number.");
-            }
-            lblSalaryError.setVisible(true);
-            result = false;
-        }
-
-        if (txtComm.getText().trim().isEmpty() || !isInteger(txtComm.getText().trim())) {
-            if (txtComm.getText().trim().isEmpty()) {
-                lblCommError.setText("Invalid. Cannot be empty.");
-            } else if (!isInteger(txtComm.getText().trim())) {
-                lblCommError.setText("Invalid. Must be integer");
-            }
-            lblCommError.setVisible(true);
-            result = false;
-        }
-
         return result;
     }
 
@@ -319,22 +290,19 @@ public class AddPatient extends javax.swing.JFrame {
         txtFname.setText("");
         txtLname.setText("");
         ftxtDateOfBirth.setText("");
-        txtSalary.setText("");
-        txtComm.setText("");
-        cmbDeptno.setSelectedIndex(0);
         cmbWard.setSelectedIndex(0);
     }
 
-    private boolean isDuplicate(int empno) throws SQLException {
+    private boolean isDuplicate(int patid) throws SQLException {
         boolean isduplicate = false;
-        String stmtSQL = "SELECT empno FROM emp WHERE empno = " + empno;
+        String stmtSQL = "SELECT patient_id FROM patient WHERE patient_id = " + patid;
         rs = dbCon.executeStatement(stmtSQL);
         // isBeforeFirst() returns false if there are no data in the resultset
         isduplicate = rs.isBeforeFirst();
 
         return isduplicate;
     }
-    private void btnAddNewEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewEmpActionPerformed
+    private void btnAddNewPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewPatActionPerformed
         // TODO add your handling code here:
 
         try {
@@ -343,21 +311,18 @@ public class AddPatient extends javax.swing.JFrame {
             if (isValidData() && !isDuplicate(Integer.parseInt(txtPatId.getText().trim()))) {
               
                 // if new employee details are valid, then add new employee to DB
-                String prepSQL = "INSERT INTO emp (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES (" 
+                String prepSQL = "INSERT INTO patient (patient_id, fname, lname, date_of_birth, ward_id) VALUES (" 
                         + txtPatId.getText().trim() + ", "
                         + "'" + txtFname.getText().toUpperCase() 
-                        + "', "  + "'" + txtLname.getText().toUpperCase() 
-                        + "', "  + cmbWard.getSelectedItem().toString() + ", "
-                        + "'" + ftxtDateOfBirth.getText().trim() + "',"   
-                        + txtSalary.getText() + ","   
-                        + txtComm.getText() + ","   
-                        + cmbDeptno.getSelectedItem() + ")";
+                        + "', '"  + txtLname.getText().toUpperCase() 
+                        + "', '" + ftxtDateOfBirth.getText().trim()
+                        + "', " + cmbWard.getSelectedItem().toString() + " )";
 
                 int result = dbCon.executePrepared(prepSQL);
                 //if succesfull
                 if (result > 0) {
 
-                    javax.swing.JLabel label = new javax.swing.JLabel("New employee added successfully.");
+                    javax.swing.JLabel label = new javax.swing.JLabel("New patient added successfully.");
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                     clearInputBoxes();
@@ -368,7 +333,7 @@ public class AddPatient extends javax.swing.JFrame {
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
                 } else { //employee already exists
-                    javax.swing.JLabel label = new javax.swing.JLabel("Empno Already exists. Use a different employee number.");
+                    javax.swing.JLabel label = new javax.swing.JLabel("Patient_id Already exists. Use a different number.");
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.INFORMATION_MESSAGE);
                     
@@ -377,9 +342,9 @@ public class AddPatient extends javax.swing.JFrame {
             }
         } catch (SQLException e) {
             //error adding employee
-            JOptionPane.showMessageDialog(null, "Error adding new employee."+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error adding new patient."+e.getMessage());
         }
-    }//GEN-LAST:event_btnAddNewEmpActionPerformed
+    }//GEN-LAST:event_btnAddNewPatActionPerformed
 
     private void ftxtDateOfBirthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtDateOfBirthActionPerformed
         // TODO add your handling code here:
@@ -387,7 +352,7 @@ public class AddPatient extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddNewEmp;
+    private javax.swing.JButton btnAddNewPat;
     private javax.swing.JComboBox<String> cmbWard;
     private javax.swing.JTextField ftxtDateOfBirth;
     private javax.swing.JLabel jLabel1;
