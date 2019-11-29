@@ -306,9 +306,9 @@ public class AddDoctor extends javax.swing.JFrame {
         txtSpec.setText("");
     }
 
-    private boolean isDuplicate(int empno) throws SQLException {
+    private boolean isDuplicate(int docid) throws SQLException {
         boolean isduplicate = false;
-        String stmtSQL = "SELECT doctor_id FROM doctor WHERE doctor_id = " + empno;
+        String stmtSQL = "SELECT doctor_id FROM doctor WHERE doctor_id = " + docid;
         rs = dbCon.executeStatement(stmtSQL);
         // isBeforeFirst() returns false if there are no data in the resultset
         isduplicate = rs.isBeforeFirst();

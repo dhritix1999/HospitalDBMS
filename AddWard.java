@@ -22,30 +22,12 @@ public class AddWard extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); // center form in screen 
         // set all error labels to invisible
-        lblEmpnoError.setVisible(false);
-        lblEnameError.setVisible(false);
-        lblJobError.setVisible(false);
-        lblHiredateError.setVisible(false);
-        lblSalaryError.setVisible(false);
-        lblCommError.setVisible(false);
+        lblWardIdError.setVisible(false);
+        lblWardNameError.setVisible(false);
+        lblWardLocError.setVisible(false);
 
-        try {//populate mgr and deptno combo boxes 
-            // populate valid mgr numbers 
-            dbCon = new myDBCon();
-            rs = dbCon.executeStatement("SELECT empno FROM emp ORDER BY empno ASC");
-            // populate mgr combo box
-            while (rs.next()) {
-                cmbMgr.addItem(rs.getString("empno"));
-            }
-            // get and populate valid department numbers 
-            rs = dbCon.executeStatement("SELECT DISTINCT deptno, dname FROM dept ORDER BY deptno ASC");
-            while (rs.next()) {
-                cmbDeptno.addItem(rs.getString("deptno"));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        dbCon = new myDBCon();
+
     }
 
     /**
@@ -61,115 +43,60 @@ public class AddWard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtEmpno = new javax.swing.JTextField();
-        txtEname = new javax.swing.JTextField();
-        txtJob = new javax.swing.JTextField();
-        txtSalary = new javax.swing.JTextField();
-        txtComm = new javax.swing.JTextField();
-        cmbMgr = new javax.swing.JComboBox<>();
-        cmbDeptno = new javax.swing.JComboBox<>();
-        btnAddNewEmp = new javax.swing.JButton();
-        lblEmpnoError = new javax.swing.JLabel();
-        lblJobError = new javax.swing.JLabel();
-        lblEnameError = new javax.swing.JLabel();
-        lblHiredateError = new javax.swing.JLabel();
-        lblSalaryError = new javax.swing.JLabel();
-        lblCommError = new javax.swing.JLabel();
-        ftxtHiredate = new javax.swing.JTextField();
+        txtWardId = new javax.swing.JTextField();
+        txtWardName = new javax.swing.JTextField();
+        txtWardLoc = new javax.swing.JTextField();
+        btnAddNewWard = new javax.swing.JButton();
+        lblWardIdError = new javax.swing.JLabel();
+        lblWardLocError = new javax.swing.JLabel();
+        lblWardNameError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Employee");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setText("Add New Employee");
+        jLabel1.setText("Add New Ward");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("EMPNO:");
+        jLabel2.setText("WARD ID:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("ENAME:");
+        jLabel3.setText("WARD NAME:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("JOB:");
+        jLabel4.setText("WARD LOCATION:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("MGR:");
+        txtWardId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("HIREDATE:");
+        txtWardName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel7.setText("SALARY:");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setText("COMMISSION:");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("DEPTNO:");
-
-        txtEmpno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txtEname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txtJob.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtJob.addActionListener(new java.awt.event.ActionListener() {
+        txtWardLoc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtWardLoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtJobActionPerformed(evt);
+                txtWardLocActionPerformed(evt);
             }
         });
 
-        txtSalary.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txtComm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        cmbMgr.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        cmbDeptno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        btnAddNewEmp.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnAddNewEmp.setText("Add New");
-        btnAddNewEmp.addActionListener(new java.awt.event.ActionListener() {
+        btnAddNewWard.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnAddNewWard.setText("Add New");
+        btnAddNewWard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddNewEmpActionPerformed(evt);
+                btnAddNewWardActionPerformed(evt);
             }
         });
 
-        lblEmpnoError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblEmpnoError.setForeground(new java.awt.Color(255, 0, 0));
-        lblEmpnoError.setText("error label");
+        lblWardIdError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        lblWardIdError.setForeground(new java.awt.Color(255, 0, 0));
+        lblWardIdError.setText("error label");
 
-        lblJobError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblJobError.setForeground(new java.awt.Color(255, 0, 0));
-        lblJobError.setText("error label");
+        lblWardLocError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        lblWardLocError.setForeground(new java.awt.Color(255, 0, 0));
+        lblWardLocError.setText("error label");
 
-        lblEnameError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblEnameError.setForeground(new java.awt.Color(255, 0, 0));
-        lblEnameError.setText("error label");
-
-        lblHiredateError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblHiredateError.setForeground(new java.awt.Color(255, 0, 0));
-        lblHiredateError.setText("error label");
-
-        lblSalaryError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblSalaryError.setForeground(new java.awt.Color(255, 0, 0));
-        lblSalaryError.setText("error label");
-
-        lblCommError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblCommError.setForeground(new java.awt.Color(255, 0, 0));
-        lblCommError.setText("error label");
-
-        ftxtHiredate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ftxtHiredate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtHiredateActionPerformed(evt);
-            }
-        });
+        lblWardNameError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        lblWardNameError.setForeground(new java.awt.Color(255, 0, 0));
+        lblWardNameError.setText("error label");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,43 +105,27 @@ public class AddWard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
+                        .addGap(135, 135, 135)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtWardName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                .addComponent(txtWardLoc)
+                                .addComponent(btnAddNewWard))
+                            .addComponent(txtWardId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnAddNewEmp)
-                                    .addComponent(txtEname, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(txtJob)
-                                    .addComponent(txtComm, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(txtSalary)
-                                    .addComponent(cmbMgr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbDeptno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtHiredate))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblEnameError, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(lblJobError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblHiredateError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblSalaryError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblCommError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtEmpno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblEmpnoError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                            .addComponent(lblWardNameError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblWardLocError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblWardIdError, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,56 +134,29 @@ public class AddWard extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtEmpno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmpnoError))
+                    .addComponent(txtWardId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWardIdError))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtEname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEnameError))
+                    .addComponent(txtWardName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWardNameError))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtJob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblJobError))
+                    .addComponent(txtWardLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWardLocError))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cmbMgr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHiredateError, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ftxtHiredate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSalaryError))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtComm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCommError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(cmbDeptno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAddNewEmp)
-                .addGap(0, 31, Short.MAX_VALUE))
+                .addComponent(btnAddNewWard)
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJobActionPerformed
+    private void txtWardLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWardLocActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtJobActionPerformed
+    }//GEN-LAST:event_txtWardLocActionPerformed
 
     // verify valid entry of integer values
     public boolean isInteger(String s) {
@@ -295,18 +179,13 @@ public class AddWard extends javax.swing.JFrame {
     }
 
     void clearErrorLabels() { // clear all labels used to display error messages 
-        lblEmpnoError.setText("");
-        lblEmpnoError.setVisible(false);
-        lblEnameError.setText("");
-        lblEnameError.setVisible(false);
-        lblJobError.setText("");
-        lblJobError.setVisible(false);
-        lblHiredateError.setText("");
-        lblHiredateError.setVisible(false);
-        lblSalaryError.setText("");
-        lblSalaryError.setVisible(false);
-        lblCommError.setText("");
-        lblCommError.setVisible(false);
+        lblWardIdError.setText("");
+        lblWardIdError.setVisible(false);
+        lblWardNameError.setText("");
+        lblWardNameError.setVisible(false);
+        lblWardLocError.setText("");
+        lblWardLocError.setVisible(false);
+
     }
 
     // validate all user entry before sending new employee details to DB
@@ -314,59 +193,33 @@ public class AddWard extends javax.swing.JFrame {
         clearErrorLabels();
         boolean result = true; // assume all details are true, set to false if otherwise 
         // you need to check format deails and make sure they are consistent with DB 
-        if (txtEmpno.getText().trim().isEmpty() || !isInteger(txtEmpno.getText().trim())) {
-            if (txtEmpno.getText().trim().isEmpty()) {
-                lblEmpnoError.setText("Invalid. Cannot be empty.");
-            } else if (!isInteger(txtEmpno.getText().trim())) {
-                lblEmpnoError.setText("Invalid. Must be integer.");
+        if (txtWardId.getText().trim().isEmpty() || !isInteger(txtWardId.getText().trim())) {
+            if (txtWardId.getText().trim().isEmpty()) {
+                lblWardIdError.setText("Invalid. Cannot be empty.");
+            } else if (!isInteger(txtWardId.getText().trim())) {
+                lblWardIdError.setText("Invalid. Must be integer.");
             }
-            lblEmpnoError.setVisible(true);
+            lblWardIdError.setVisible(true);
             result = false;
         }
 
-        if (txtEname.getText().trim().isEmpty() || (txtEname.getText().trim().length() > 10)) {
-            if (txtEname.getText().trim().isEmpty()) {
-                lblEnameError.setText("Invalid. Cannot be empty.");
-            } else if ((txtEname.getText().trim().length() > 10)) {
-                lblEnameError.setText("Invalid. Must be < 10 chars.");
+        if (txtWardName.getText().trim().isEmpty() || (txtWardName.getText().trim().length() > 30)) {
+            if (txtWardName.getText().trim().isEmpty()) {
+                lblWardNameError.setText("Invalid. Cannot be empty.");
+            } else if ((txtWardName.getText().trim().length() > 30)) {
+                lblWardNameError.setText("Invalid. Must be <= 30 chars.");
             }
-            lblEnameError.setVisible(true);
+            lblWardNameError.setVisible(true);
             result = false;
         }
 
-        if (txtJob.getText().trim().isEmpty() || (txtJob.getText().trim().length() > 9)) {
-            if (txtJob.getText().trim().isEmpty()) {
-                lblJobError.setText("Invalid. Cannot be empty.");
-            } else if (txtJob.getText().trim().length() > 9) {
-                lblJobError.setText("Invalid. Must be < 9 chars.");
+        if (txtWardLoc.getText().trim().isEmpty() || (txtWardLoc.getText().trim().length() > 30)) {
+            if (txtWardLoc.getText().trim().isEmpty()) {
+                lblWardLocError.setText("Invalid. Cannot be empty.");
+            } else if (txtWardLoc.getText().trim().length() > 30) {
+                lblWardLocError.setText("Invalid. Must be <= 30 chars.");
             }
-            lblJobError.setVisible(true);
-            result = false;
-        }
-
-        if (ftxtHiredate.getText().trim().isEmpty()) {
-            lblHiredateError.setText("Invalid. Cannot be empty.");
-            lblHiredateError.setVisible(true);
-            result = false;
-        }
-
-        if (txtSalary.getText().trim().isEmpty() || !(isInteger(txtSalary.getText().trim()) || isDouble(txtSalary.getText().trim()))) {
-            if (txtSalary.getText().trim().isEmpty()) {
-                lblSalaryError.setText("Invalid. Cannot be empty.");
-            } else if (!(isInteger(txtSalary.getText().trim()) || isDouble(txtSalary.getText().trim()))) {
-                lblSalaryError.setText("Invalid. Must be number.");
-            }
-            lblSalaryError.setVisible(true);
-            result = false;
-        }
-
-        if (txtComm.getText().trim().isEmpty() || !isInteger(txtComm.getText().trim())) {
-            if (txtComm.getText().trim().isEmpty()) {
-                lblCommError.setText("Invalid. Cannot be empty.");
-            } else if (!isInteger(txtComm.getText().trim())) {
-                lblCommError.setText("Invalid. Must be integer");
-            }
-            lblCommError.setVisible(true);
+            lblWardLocError.setVisible(true);
             result = false;
         }
 
@@ -374,60 +227,51 @@ public class AddWard extends javax.swing.JFrame {
     }
 
     void clearInputBoxes() { // clear for every new entry 
-        txtEmpno.setText("");
-        txtEname.setText("");
-        txtJob.setText("");
-        ftxtHiredate.setText("");
-        txtSalary.setText("");
-        txtComm.setText("");
-        cmbDeptno.setSelectedIndex(0);
-        cmbMgr.setSelectedIndex(0);
+        txtWardId.setText("");
+        txtWardName.setText("");
+        txtWardLoc.setText("");
     }
 
-    private boolean isDuplicate(int empno) throws SQLException {
+    private boolean isDuplicate(int wardid) throws SQLException {
         boolean isduplicate = false;
-        String stmtSQL = "SELECT empno FROM emp WHERE empno = " + empno;
+        String stmtSQL = "SELECT ward_id FROM ward WHERE ward_id = " + wardid;
         rs = dbCon.executeStatement(stmtSQL);
         // isBeforeFirst() returns false if there are no data in the resultset
         isduplicate = rs.isBeforeFirst();
 
         return isduplicate;
     }
-    private void btnAddNewEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewEmpActionPerformed
+    private void btnAddNewWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewWardActionPerformed
         // TODO add your handling code here:
 
         try {
            // you need also to verify that the empno is unique and not duplicate 
               
-            if (isValidData() && !isDuplicate(Integer.parseInt(txtEmpno.getText().trim()))) {
+            if (isValidData() && !isDuplicate(Integer.parseInt(txtWardId.getText().trim()))) {
               
                 // if new employee details are valid, then add new employee to DB
-                String prepSQL = "INSERT INTO emp (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES (" 
-                        + txtEmpno.getText().trim() + ", "
-                        + "'" + txtEname.getText().toUpperCase() 
-                        + "', "  + "'" + txtJob.getText().toUpperCase() 
-                        + "', "  + cmbMgr.getSelectedItem().toString() + ", "
-                        + "'" + ftxtHiredate.getText().trim() + "',"   
-                        + txtSalary.getText() + ","   
-                        + txtComm.getText() + ","   
-                        + cmbDeptno.getSelectedItem() + ")";
+                String prepSQL = "INSERT INTO ward (ward_id, ward_name, ward_location) VALUES (" 
+                        + txtWardId.getText().trim() + ", "
+                        + "'" + txtWardName.getText().toUpperCase() 
+                        + "', "  + "'" + txtWardLoc.getText().toUpperCase() 
+                        + "')";
 
                 int result = dbCon.executePrepared(prepSQL);
                 //if succesfull
                 if (result > 0) {
 
-                    javax.swing.JLabel label = new javax.swing.JLabel("New employee added successfully.");
+                    javax.swing.JLabel label = new javax.swing.JLabel("New ward added successfully.");
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                     clearInputBoxes();
                 }  }
                 else { //validation error
-                if (!isDuplicate(Integer.parseInt(txtEmpno.getText().trim()))) {
+                if (!isDuplicate(Integer.parseInt(txtWardId.getText().trim()))) {
                     javax.swing.JLabel label = new javax.swing.JLabel("Please fix validation errors...");
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
                 } else { //employee already exists
-                    javax.swing.JLabel label = new javax.swing.JLabel("Empno Already exists. Use a different employee number.");
+                    javax.swing.JLabel label = new javax.swing.JLabel("Ward Already exists. Use a different number.");
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.INFORMATION_MESSAGE);
                     
@@ -436,39 +280,22 @@ public class AddWard extends javax.swing.JFrame {
             }
         } catch (SQLException e) {
             //error adding employee
-            JOptionPane.showMessageDialog(null, "Error adding new employee."+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error adding new ward."+e.getMessage());
         }
-    }//GEN-LAST:event_btnAddNewEmpActionPerformed
-
-    private void ftxtHiredateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtHiredateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtHiredateActionPerformed
+    }//GEN-LAST:event_btnAddNewWardActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddNewEmp;
-    private javax.swing.JComboBox<String> cmbDeptno;
-    private javax.swing.JComboBox<String> cmbMgr;
-    private javax.swing.JTextField ftxtHiredate;
+    private javax.swing.JButton btnAddNewWard;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel lblCommError;
-    private javax.swing.JLabel lblEmpnoError;
-    private javax.swing.JLabel lblEnameError;
-    private javax.swing.JLabel lblHiredateError;
-    private javax.swing.JLabel lblJobError;
-    private javax.swing.JLabel lblSalaryError;
-    private javax.swing.JTextField txtComm;
-    private javax.swing.JTextField txtEmpno;
-    private javax.swing.JTextField txtEname;
-    private javax.swing.JTextField txtJob;
-    private javax.swing.JTextField txtSalary;
+    private javax.swing.JLabel lblWardIdError;
+    private javax.swing.JLabel lblWardLocError;
+    private javax.swing.JLabel lblWardNameError;
+    private javax.swing.JTextField txtWardId;
+    private javax.swing.JTextField txtWardLoc;
+    private javax.swing.JTextField txtWardName;
     // End of variables declaration//GEN-END:variables
 }
