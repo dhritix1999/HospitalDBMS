@@ -341,7 +341,7 @@ public class UpdateDeletePatient extends javax.swing.JFrame {
         }
         try {
             // make the result set scrolable forward/backward updatable
-            String prepSQL = "DELETE patient_id WHERE patient_id = " + txtPatId.getText().trim();
+            String prepSQL = "DELETE patient WHERE patient_id = " + txtPatId.getText().trim();
             int result = dbCon.executePrepared(prepSQL);
             if (result > 0) {
                 javax.swing.JLabel label = new javax.swing.JLabel("Patient No " + txtPatId.getText().trim() + " deleted successfully.");

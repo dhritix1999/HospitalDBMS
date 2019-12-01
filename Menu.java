@@ -50,6 +50,7 @@ public class Menu extends javax.swing.JFrame {
         menuItemUpdDelWard = new javax.swing.JMenuItem();
         menuTreats = new javax.swing.JMenu();
         menuItemAddTreats = new javax.swing.JMenuItem();
+        menuItemDeleteTreatment = new javax.swing.JMenuItem();
         menuUser = new javax.swing.JMenu();
         menuItemAddUser = new javax.swing.JMenuItem();
         menuItemUpdDelUser = new javax.swing.JMenuItem();
@@ -173,6 +174,15 @@ public class Menu extends javax.swing.JFrame {
         });
         menuTreats.add(menuItemAddTreats);
 
+        menuItemDeleteTreatment.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemDeleteTreatment.setText("Delete Treatment");
+        menuItemDeleteTreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDeleteTreatmentActionPerformed(evt);
+            }
+        });
+        menuTreats.add(menuItemDeleteTreatment);
+
         jMenuBar1.add(menuTreats);
 
         menuUser.setText("User");
@@ -268,6 +278,10 @@ public class Menu extends javax.swing.JFrame {
         (new AddTreats()).setVisible(true);
     }//GEN-LAST:event_menuItemAddTreatsActionPerformed
 
+    private void menuItemDeleteTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteTreatmentActionPerformed
+        (new DeleteTreats()).setVisible(true);
+    }//GEN-LAST:event_menuItemDeleteTreatmentActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu3;
@@ -279,6 +293,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemAddTreats;
     private javax.swing.JMenuItem menuItemAddUser;
     private javax.swing.JMenuItem menuItemAddWard;
+    private javax.swing.JMenuItem menuItemDeleteTreatment;
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenuItem menuItemUpdDelDoc;
