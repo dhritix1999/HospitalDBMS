@@ -48,6 +48,8 @@ public class Menu extends javax.swing.JFrame {
         menuWard = new javax.swing.JMenu();
         menuItemAddWard = new javax.swing.JMenuItem();
         menuItemUpdDelWard = new javax.swing.JMenuItem();
+        menuTreats = new javax.swing.JMenu();
+        menuItemAddTreats = new javax.swing.JMenuItem();
         menuUser = new javax.swing.JMenu();
         menuItemAddUser = new javax.swing.JMenuItem();
         menuItemUpdDelUser = new javax.swing.JMenuItem();
@@ -159,6 +161,20 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuWard);
 
+        menuTreats.setText("Treats");
+        menuTreats.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        menuItemAddTreats.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemAddTreats.setText("Add Treatment");
+        menuItemAddTreats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAddTreatsActionPerformed(evt);
+            }
+        });
+        menuTreats.add(menuItemAddTreats);
+
+        jMenuBar1.add(menuTreats);
+
         menuUser.setText("User");
         menuUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
@@ -190,7 +206,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGap(0, 476, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,6 +264,10 @@ public class Menu extends javax.swing.JFrame {
         (new UpdateDeleteWard()).setVisible(true);
     }//GEN-LAST:event_menuItemUpdDelWardActionPerformed
 
+    private void menuItemAddTreatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddTreatsActionPerformed
+        (new AddTreats()).setVisible(true);
+    }//GEN-LAST:event_menuItemAddTreatsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu3;
@@ -256,6 +276,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem menuItemAddDoc;
     private javax.swing.JMenuItem menuItemAddPat;
+    private javax.swing.JMenuItem menuItemAddTreats;
     private javax.swing.JMenuItem menuItemAddUser;
     private javax.swing.JMenuItem menuItemAddWard;
     private javax.swing.JMenuItem menuItemExit;
@@ -265,6 +286,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemUpdDelUser;
     private javax.swing.JMenuItem menuItemUpdDelWard;
     private javax.swing.JMenu menuPatient;
+    private javax.swing.JMenu menuTreats;
     private javax.swing.JMenu menuUser;
     private javax.swing.JMenu menuWard;
     // End of variables declaration//GEN-END:variables
