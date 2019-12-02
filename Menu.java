@@ -51,6 +51,9 @@ public class Menu extends javax.swing.JFrame {
         menuTreats = new javax.swing.JMenu();
         menuItemAddTreats = new javax.swing.JMenuItem();
         menuItemDeleteTreatment = new javax.swing.JMenuItem();
+        menuWorksFor = new javax.swing.JMenu();
+        menuItemAddWorksFor = new javax.swing.JMenuItem();
+        menuItemDelWorksFor = new javax.swing.JMenuItem();
         menuUser = new javax.swing.JMenu();
         menuItemAddUser = new javax.swing.JMenuItem();
         menuItemUpdDelUser = new javax.swing.JMenuItem();
@@ -68,7 +71,6 @@ public class Menu extends javax.swing.JFrame {
 
         menuItemLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         menuItemLogout.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        menuItemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logout.png"))); // NOI18N
         menuItemLogout.setText("Logout");
         menuItemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +81,6 @@ public class Menu extends javax.swing.JFrame {
 
         menuItemExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         menuItemExit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        menuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close.png"))); // NOI18N
         menuItemExit.setText("Exit");
         menuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +186,31 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuTreats);
 
+        menuWorksFor.setText("WorksFor");
+        menuWorksFor.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        menuItemAddWorksFor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemAddWorksFor.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemAddWorksFor.setText("Assign Doctor to Ward");
+        menuItemAddWorksFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAddWorksForActionPerformed(evt);
+            }
+        });
+        menuWorksFor.add(menuItemAddWorksFor);
+
+        menuItemDelWorksFor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemDelWorksFor.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemDelWorksFor.setText("Delete WorksFor");
+        menuItemDelWorksFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDelWorksForActionPerformed(evt);
+            }
+        });
+        menuWorksFor.add(menuItemDelWorksFor);
+
+        jMenuBar1.add(menuWorksFor);
+
         menuUser.setText("User");
         menuUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
@@ -216,11 +242,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 476, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 111, Short.MAX_VALUE)
         );
 
         pack();
@@ -282,6 +308,14 @@ public class Menu extends javax.swing.JFrame {
         (new DeleteTreats()).setVisible(true);
     }//GEN-LAST:event_menuItemDeleteTreatmentActionPerformed
 
+    private void menuItemAddWorksForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddWorksForActionPerformed
+        (new AddWorksFor()).setVisible(true);
+    }//GEN-LAST:event_menuItemAddWorksForActionPerformed
+
+    private void menuItemDelWorksForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDelWorksForActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemDelWorksForActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu3;
@@ -293,6 +327,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemAddTreats;
     private javax.swing.JMenuItem menuItemAddUser;
     private javax.swing.JMenuItem menuItemAddWard;
+    private javax.swing.JMenuItem menuItemAddWorksFor;
+    private javax.swing.JMenuItem menuItemDelWorksFor;
     private javax.swing.JMenuItem menuItemDeleteTreatment;
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JMenuItem menuItemLogout;
@@ -304,5 +340,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu menuTreats;
     private javax.swing.JMenu menuUser;
     private javax.swing.JMenu menuWard;
+    private javax.swing.JMenu menuWorksFor;
     // End of variables declaration//GEN-END:variables
 }

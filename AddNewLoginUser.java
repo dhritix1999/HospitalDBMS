@@ -312,11 +312,11 @@ public class AddNewLoginUser extends javax.swing.JFrame {
                     userType = 1;
                 }
 
-                String prepSQL = "INSERT INTO LoginUsers (Username, Password, Type, Name) VALUES ("
+                String prepSQL = "INSERT INTO LoginUsers (Username, Password, Name, Type) VALUES ("
                         + "'" + txtUsername.getText().trim() + "', "
                         + "'" + txtPassword.getText() + "', "
-                        + userType + ", "
-                        + "'" + txtName.getText().trim() + "')";
+                        + "'" + txtName.getText().trim() +"', "
+                        + userType + ")";
 
                 
                 int result = dbCon.executePrepared(prepSQL);
