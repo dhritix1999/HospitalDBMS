@@ -45,6 +45,7 @@ public class Menu extends javax.swing.JFrame {
         menuDoctor = new javax.swing.JMenu();
         menuItemAddDoc = new javax.swing.JMenuItem();
         menuItemUpdDelDoc = new javax.swing.JMenuItem();
+        menuItemQueryPatofDoc = new javax.swing.JMenuItem();
         menuWard = new javax.swing.JMenu();
         menuItemAddWard = new javax.swing.JMenuItem();
         menuItemUpdDelWard = new javax.swing.JMenuItem();
@@ -137,6 +138,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuDoctor.add(menuItemUpdDelDoc);
+
+        menuItemQueryPatofDoc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemQueryPatofDoc.setText("Retrieve Patients of Doctor");
+        menuItemQueryPatofDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemQueryPatofDocActionPerformed(evt);
+            }
+        });
+        menuDoctor.add(menuItemQueryPatofDoc);
 
         jMenuBar1.add(menuDoctor);
 
@@ -316,6 +326,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemDelWorksForActionPerformed
 
+    private void menuItemQueryPatofDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofDocActionPerformed
+        (new RetrievePatientsOfDoctor()).setVisible(true);
+    }//GEN-LAST:event_menuItemQueryPatofDocActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu3;
@@ -332,6 +346,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemDeleteTreatment;
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JMenuItem menuItemLogout;
+    private javax.swing.JMenuItem menuItemQueryPatofDoc;
     private javax.swing.JMenuItem menuItemUpdDelDoc;
     private javax.swing.JMenuItem menuItemUpdDelPat;
     private javax.swing.JMenuItem menuItemUpdDelUser;
