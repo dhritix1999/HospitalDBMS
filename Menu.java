@@ -46,6 +46,7 @@ public class Menu extends javax.swing.JFrame {
         menuItemAddDoc = new javax.swing.JMenuItem();
         menuItemUpdDelDoc = new javax.swing.JMenuItem();
         menuItemQueryPatofDoc = new javax.swing.JMenuItem();
+        menuItemRetrieveDocStats = new javax.swing.JMenuItem();
         menuWard = new javax.swing.JMenu();
         menuItemAddWard = new javax.swing.JMenuItem();
         menuItemUpdDelWard = new javax.swing.JMenuItem();
@@ -147,6 +148,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuDoctor.add(menuItemQueryPatofDoc);
+
+        menuItemRetrieveDocStats.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemRetrieveDocStats.setText("Retrieve Doctor Salary Statistics");
+        menuItemRetrieveDocStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRetrieveDocStatsActionPerformed(evt);
+            }
+        });
+        menuDoctor.add(menuItemRetrieveDocStats);
 
         jMenuBar1.add(menuDoctor);
 
@@ -330,6 +340,10 @@ public class Menu extends javax.swing.JFrame {
         (new RetrievePatientsOfDoctor()).setVisible(true);
     }//GEN-LAST:event_menuItemQueryPatofDocActionPerformed
 
+    private void menuItemRetrieveDocStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRetrieveDocStatsActionPerformed
+        (new RetrieveDoctorSalaryStats()).setVisible(true);
+    }//GEN-LAST:event_menuItemRetrieveDocStatsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu3;
@@ -347,6 +361,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenuItem menuItemQueryPatofDoc;
+    private javax.swing.JMenuItem menuItemRetrieveDocStats;
     private javax.swing.JMenuItem menuItemUpdDelDoc;
     private javax.swing.JMenuItem menuItemUpdDelPat;
     private javax.swing.JMenuItem menuItemUpdDelUser;
