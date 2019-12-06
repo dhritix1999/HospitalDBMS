@@ -25,7 +25,6 @@ public class UpdateDeletePatient extends javax.swing.JFrame {
     public UpdateDeletePatient() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
         lblPatIdError.setVisible(false);
         lblFnameError.setVisible(false);
         lblLnameError.setVisible(false);

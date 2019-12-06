@@ -51,7 +51,7 @@ public class LoginForm extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login to JDBC GUI");
@@ -99,9 +99,9 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(btnLogin);
         btnLogin.setBounds(250, 230, 110, 45);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospitaldbms/istockphoto-997921658-612x612.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 610, 300);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospitaldbms/WaitingRoom.jpg"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 610, 300);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,7 +147,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
