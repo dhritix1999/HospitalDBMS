@@ -1,3 +1,9 @@
+
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +17,7 @@
 public class Menu extends javax.swing.JFrame {
 
     LoginUser luser; // the login user details are obtained from the Login form
-
+    myDBCon db = new myDBCon();
     /**
      * Creates new form Menu
      */
@@ -22,6 +28,27 @@ public class Menu extends javax.swing.JFrame {
         luser = user; // user details are obtained from the Login form and passed to constructor of Menu form object
         if (user.type == 1) { // hide the user management menu if the logged in user is NOT administrator 
             menuUser.setVisible(false);
+        }
+    }
+    
+    private String getFormattedDate() {
+        LocalDateTime retrievedTime = LocalDateTime.now();
+        DateTimeFormatter outFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy H:mm:ss");
+        return retrievedTime.format(outFormatter);
+    }
+    
+    private void addLoggingEntry(String activity, String table){
+        try{
+        String prepSQL = "INSERT INTO logging VALUES ('"
+                + luser.username + "', '"
+                + activity + "', '"
+                + table + "', "
+                + "to_date('"+
+                getFormattedDate()+"', 'dd-Mon-yyyy hh24:mi:ss'))";
+        int result = db.executePrepared(prepSQL);
+        }
+        catch (SQLException e){
+            System.out.println(e);
         }
     }
 
@@ -284,11 +311,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void menuItemAddPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddPatActionPerformed
         // TODO add your handling code here:
+        addLoggingEntry("Adding Patient", "Patient");
         (new AddPatient()).setVisible(true);
     }//GEN-LAST:event_menuItemAddPatActionPerformed
 
     private void menuItemUpdDelPatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelPatActionPerformed
         // TODO add your handling code here:
+        addLoggingEntry("Update/Delete Patient", "Patient");
         (new UpdateDeletePatient()).setVisible(true);
 
     }//GEN-LAST:event_menuItemUpdDelPatActionPerformed
@@ -306,51 +335,66 @@ public class Menu extends javax.swing.JFrame {
 
     private void menuItemAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddUserActionPerformed
         // TODO add your handling code here:
+        addLoggingEntry("Adding User", "Users");
         (new AddNewLoginUser()).setVisible(true);
     }//GEN-LAST:event_menuItemAddUserActionPerformed
 
     private void menuItemUpdDelUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelUserActionPerformed
         // TODO add your handling code here:
+        addLoggingEntry("Update/Delete Users", "User");
         (new UpdateDeleteLoginUser()).setVisible(true);
     }//GEN-LAST:event_menuItemUpdDelUserActionPerformed
 
     private void menuItemUpdDelDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelDocActionPerformed
+        addLoggingEntry("Update/Delete Doctor", "Doctor");
         (new UpdateDeleteDoctor()).setVisible(true);
     }//GEN-LAST:event_menuItemUpdDelDocActionPerformed
 
     private void menuItemAddWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddWardActionPerformed
+        addLoggingEntry("Add Ward", "Ward");
         (new AddWard()).setVisible(true);
     }//GEN-LAST:event_menuItemAddWardActionPerformed
 
     private void menuItemAddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddDocActionPerformed
+        addLoggingEntry("Add Doctor", "Doctor");
         (new AddDoctor()).setVisible(true);
     }//GEN-LAST:event_menuItemAddDocActionPerformed
 
     private void menuItemUpdDelWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdDelWardActionPerformed
+        addLoggingEntry("Update/Delete Ward", "Ward");
         (new UpdateDeleteWard()).setVisible(true);
     }//GEN-LAST:event_menuItemUpdDelWardActionPerformed
 
     private void menuItemAddTreatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddTreatsActionPerformed
+        addLoggingEntry("Add Treatment", "Treats");
         (new AddTreats()).setVisible(true);
     }//GEN-LAST:event_menuItemAddTreatsActionPerformed
 
     private void menuItemDeleteTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDeleteTreatmentActionPerformed
+        addLoggingEntry("Delete Treatment", "Treats");
         (new DeleteTreats()).setVisible(true);
     }//GEN-LAST:event_menuItemDeleteTreatmentActionPerformed
 
     private void menuItemAddWorksForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAddWorksForActionPerformed
+        addLoggingEntry("Add WorksFor", "Works For");
         (new AddWorksFor()).setVisible(true);
     }//GEN-LAST:event_menuItemAddWorksForActionPerformed
 
     private void menuItemDelWorksForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDelWorksForActionPerformed
         // TODO add your handling code here:
+        addLoggingEntry("Delete WorksFor", "Works For");
+        (new DeleteWorksFor()).setVisible(true);
     }//GEN-LAST:event_menuItemDelWorksForActionPerformed
 
     private void menuItemQueryPatofDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofDocActionPerformed
+
         (new RetrievePatientsOfWard()).setVisible(true);
+        addLoggingEntry("Query Patients", "Treats");
+        (new RetrievePatientsOfDoctor()).setVisible(true);
     }//GEN-LAST:event_menuItemQueryPatofDocActionPerformed
 
     private void menuItemRetrieveDocStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRetrieveDocStatsActionPerformed
+        addLoggingEntry("Query Doctors", "Doctor");
         (new RetrieveDoctorSalaryStats()).setVisible(true);
     }//GEN-LAST:event_menuItemRetrieveDocStatsActionPerformed
 
