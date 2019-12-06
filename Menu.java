@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         if (user.type == 1) { // hide the user management menu if the logged in user is NOT administrator 
             menuUser.setVisible(false);
         }
+       
     }
     
     private String getFormattedDate() {
@@ -63,6 +64,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu3 = new javax.swing.JMenu();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuItemLogout = new javax.swing.JMenuItem();
@@ -70,9 +72,9 @@ public class Menu extends javax.swing.JFrame {
         menuPatient = new javax.swing.JMenu();
         menuItemAddPat = new javax.swing.JMenuItem();
         menuItemUpdDelPat = new javax.swing.JMenuItem();
-        menuItemQueryPatofDoc1 = new javax.swing.JMenuItem();
 <<<<<<< HEAD
 =======
+        menuItemQueryPatofWard = new javax.swing.JMenuItem();
 >>>>>>> 63856dd5a273c6add0e97324b275696cb7b6b5f8
         menuDoctor = new javax.swing.JMenu();
         menuItemAddDoc = new javax.swing.JMenuItem();
@@ -82,6 +84,7 @@ public class Menu extends javax.swing.JFrame {
         menuWard = new javax.swing.JMenu();
         menuItemAddWard = new javax.swing.JMenuItem();
         menuItemUpdDelWard = new javax.swing.JMenuItem();
+        menuItemQueryPatofWard = new javax.swing.JMenuItem();
         menuTreats = new javax.swing.JMenu();
         menuItemAddTreats = new javax.swing.JMenuItem();
         menuItemDeleteTreatment = new javax.swing.JMenuItem();
@@ -98,6 +101,9 @@ public class Menu extends javax.swing.JFrame {
         setTitle("Menu - JDBC GUI");
         setResizable(false);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospitaldbms/hospital.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 
         menuFile.setText("File");
@@ -105,6 +111,7 @@ public class Menu extends javax.swing.JFrame {
 
         menuItemLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         menuItemLogout.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospitaldbms/logout.png"))); // NOI18N
         menuItemLogout.setText("Logout");
         menuItemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +122,7 @@ public class Menu extends javax.swing.JFrame {
 
         menuItemExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         menuItemExit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospitaldbms/close.png"))); // NOI18N
         menuItemExit.setText("Exit");
         menuItemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,14 +156,16 @@ public class Menu extends javax.swing.JFrame {
         });
         menuPatient.add(menuItemUpdDelPat);
 
-        menuItemQueryPatofDoc1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        menuItemQueryPatofDoc1.setText("Retrieve Patients of Ward");
-        menuItemQueryPatofDoc1.addActionListener(new java.awt.event.ActionListener() {
+<<<<<<< HEAD
+=======
+        menuItemQueryPatofWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemQueryPatofWard.setText("Retrieve Patients of Ward");
+        menuItemQueryPatofWard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemQueryPatofDoc1ActionPerformed(evt);
+                menuItemQueryPatofWardActionPerformed(evt);
             }
         });
-        menuPatient.add(menuItemQueryPatofDoc1);
+        menuPatient.add(menuItemQueryPatofWard);
 
 >>>>>>> 63856dd5a273c6add0e97324b275696cb7b6b5f8
         jMenuBar1.add(menuPatient);
@@ -222,6 +232,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuWard.add(menuItemUpdDelWard);
+
+        menuItemQueryPatofWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemQueryPatofWard.setText("Retrieve Patients of Ward");
+        menuItemQueryPatofWard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemQueryPatofWardActionPerformed(evt);
+            }
+        });
+        menuWard.add(menuItemQueryPatofWard);
 
         jMenuBar1.add(menuWard);
 
@@ -304,11 +323,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -393,9 +412,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void menuItemQueryPatofDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofDocActionPerformed
 
-        (new RetrievePatientsOfWard()).setVisible(true);
         addLoggingEntry("Query Patients", "Treats");
-        (new RetrievePatientsOfDoctor()).setVisible(true);
+         (new RetrievePatientsOfDoctor()).setVisible(true);
+        
     }//GEN-LAST:event_menuItemQueryPatofDocActionPerformed
 
     private void menuItemRetrieveDocStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRetrieveDocStatsActionPerformed
@@ -403,12 +422,15 @@ public class Menu extends javax.swing.JFrame {
         (new RetrieveDoctorSalaryStats()).setVisible(true);
     }//GEN-LAST:event_menuItemRetrieveDocStatsActionPerformed
 
-    private void menuItemQueryPatofDoc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofDoc1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemQueryPatofDoc1ActionPerformed
+    private void menuItemQueryPatofWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofWardActionPerformed
+
+        addLoggingEntry("Query Patients", "Patient");
+        (new RetrievePatientsOfWard()).setVisible(true);
+    }//GEN-LAST:event_menuItemQueryPatofWardActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuDoctor;
@@ -424,7 +446,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenuItem menuItemQueryPatofDoc;
-    private javax.swing.JMenuItem menuItemQueryPatofDoc1;
+    private javax.swing.JMenuItem menuItemQueryPatofWard;
     private javax.swing.JMenuItem menuItemRetrieveDocStats;
     private javax.swing.JMenuItem menuItemUpdDelDoc;
     private javax.swing.JMenuItem menuItemUpdDelPat;
