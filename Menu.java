@@ -69,7 +69,7 @@ public class Menu extends javax.swing.JFrame {
         menuPatient = new javax.swing.JMenu();
         menuItemAddPat = new javax.swing.JMenuItem();
         menuItemUpdDelPat = new javax.swing.JMenuItem();
-        menuItemQueryPatofDoc1 = new javax.swing.JMenuItem();
+        menuItemQueryPatofWard = new javax.swing.JMenuItem();
         menuDoctor = new javax.swing.JMenu();
         menuItemAddDoc = new javax.swing.JMenuItem();
         menuItemUpdDelDoc = new javax.swing.JMenuItem();
@@ -144,14 +144,14 @@ public class Menu extends javax.swing.JFrame {
         });
         menuPatient.add(menuItemUpdDelPat);
 
-        menuItemQueryPatofDoc1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        menuItemQueryPatofDoc1.setText("Retrieve Patients of Ward");
-        menuItemQueryPatofDoc1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemQueryPatofWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemQueryPatofWard.setText("Retrieve Patients of Ward");
+        menuItemQueryPatofWard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemQueryPatofDoc1ActionPerformed(evt);
+                menuItemQueryPatofWardActionPerformed(evt);
             }
         });
-        menuPatient.add(menuItemQueryPatofDoc1);
+        menuPatient.add(menuItemQueryPatofWard);
 
         jMenuBar1.add(menuPatient);
 
@@ -398,9 +398,10 @@ public class Menu extends javax.swing.JFrame {
         (new RetrieveDoctorSalaryStats()).setVisible(true);
     }//GEN-LAST:event_menuItemRetrieveDocStatsActionPerformed
 
-    private void menuItemQueryPatofDoc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofDoc1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemQueryPatofDoc1ActionPerformed
+    private void menuItemQueryPatofWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofWardActionPerformed
+        addLoggingEntry("Query Patients", "Patient");
+        (new RetrievePatientsOfWard()).setVisible(true);
+    }//GEN-LAST:event_menuItemQueryPatofWardActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -419,7 +420,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenuItem menuItemQueryPatofDoc;
-    private javax.swing.JMenuItem menuItemQueryPatofDoc1;
+    private javax.swing.JMenuItem menuItemQueryPatofWard;
     private javax.swing.JMenuItem menuItemRetrieveDocStats;
     private javax.swing.JMenuItem menuItemUpdDelDoc;
     private javax.swing.JMenuItem menuItemUpdDelPat;

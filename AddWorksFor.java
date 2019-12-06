@@ -159,7 +159,7 @@ public class AddWorksFor extends javax.swing.JFrame {
 
     private boolean isDuplicate(int docid, int wardid) throws SQLException {
         boolean isduplicate = false;
-        String stmtSQL = "SELECT * FROM Works_for WHERE doc_id = " + docid+ "AND wards_id="+wardid;
+        String stmtSQL = "SELECT * FROM Works_for WHERE doc_id = " + docid+ " AND wards_id = "+wardid;
         ResultSet rs = dbCon.executeStatement(stmtSQL);
         // isBeforeFirst() returns false if there are no data in the resultset
         isduplicate = rs.isBeforeFirst();
@@ -177,7 +177,7 @@ public class AddWorksFor extends javax.swing.JFrame {
             if (!isDuplicate(Integer.parseInt(doc),Integer.parseInt(ward))){
               
                 String prepSQL = "INSERT INTO WORKS_FOR (doc_id, wards_id) VALUES (" 
-                        + doc+ ", " + ward;
+                        + doc+ ", " + ward + ")";
 
                 int result = dbCon.executePrepared(prepSQL);
                 //if succesfull

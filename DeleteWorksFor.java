@@ -35,7 +35,7 @@ public class DeleteWorksFor extends javax.swing.JFrame {
 
         try {
 
-            rsWorks = dbCon.executeStatement("SELECT doc_id, ward_id FROM treats ORDER BY doc_id ASC ");
+            rsWorks = dbCon.executeStatement("SELECT doc_id, wards_id FROM works_for ORDER BY doc_id ASC");
 
             // populate rest of fields
             rsWorks.beforeFirst();
@@ -181,13 +181,13 @@ public class DeleteWorksFor extends javax.swing.JFrame {
             txtDocId.setText(rsWorks.getString("doc_id"));
             txtWardId.setText(rsWorks.getString("wards_id"));
             
-            String DocName = "SELECT first_name, last_name FROM DOCTOR WHERE doctor_id = "+rsWorks.getString("doc_id");
-            ResultSet Doc = dbCon.executeStatement(DocName);
-            lblDocName.setText(Doc.getString("first_name, last_name"));
-            
-           String WardName = "SELECT ward_name FROM WARD WHERE ward_id = "+rsWorks.getString("wards_id");
-            ResultSet Ward = dbCon.executeStatement(WardName);
-            lblWardName.setText(Doc.getString("ward_name"));
+//            String DocName = "SELECT first_name, last_name FROM DOCTOR WHERE doctor_id = "+rsWorks.getString("doc_id");
+//            ResultSet Doc = dbCon.executeStatement(DocName);
+//            lblDocName.setText(Doc.getString("first_name"));
+//            
+//           String WardName = "SELECT ward_name FROM WARD WHERE ward_id = "+rsWorks.getString("wards_id");
+//            ResultSet Ward = dbCon.executeStatement(WardName);
+//            lblWardName.setText(Doc.getString("ward_name"));
             
             EnableDisableButtons();
         } catch (SQLException ex) {
