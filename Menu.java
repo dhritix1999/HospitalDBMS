@@ -157,6 +157,7 @@ public class Menu extends javax.swing.JFrame {
         });
         menuPatient.add(menuItemQueryPatofDoc1);
 
+>>>>>>> 63856dd5a273c6add0e97324b275696cb7b6b5f8
         jMenuBar1.add(menuPatient);
 
         menuDoctor.setText("Doctor");
