@@ -23,6 +23,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu(LoginUser user) {
         initComponents();
+        this.setSize(620, 480);
         this.setLocationRelativeTo(null); // center form in screen 
 
         luser = user; // user details are obtained from the Login form and passed to constructor of Menu form object
@@ -70,6 +71,9 @@ public class Menu extends javax.swing.JFrame {
         menuItemAddPat = new javax.swing.JMenuItem();
         menuItemUpdDelPat = new javax.swing.JMenuItem();
         menuItemQueryPatofDoc1 = new javax.swing.JMenuItem();
+<<<<<<< HEAD
+=======
+>>>>>>> 63856dd5a273c6add0e97324b275696cb7b6b5f8
         menuDoctor = new javax.swing.JMenu();
         menuItemAddDoc = new javax.swing.JMenuItem();
         menuItemUpdDelDoc = new javax.swing.JMenuItem();

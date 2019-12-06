@@ -36,7 +36,7 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
                     "SELECT ward_id FROM ward ORDER BY ward_id ASC");
             cmbWardId.removeAllItems();
             while (rsWard.next()) {
-                cmbWardId.addItem(rsWard.getString("doctor_id"));
+                cmbWardId.addItem(rsWard.getString("ward_id"));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -48,14 +48,15 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
 
         try {
             rsPatient = dbCon.executeStatement("select distinct patient_id, fname, lname, date_of_birth, ward_id" +
-                    "from patient" +
-                    "where ward_id = " +
+                    " from patient" +
+                    " where ward_id = " +
                     ward_id);
 
             // populate fields
             rsPatient.beforeFirst();
-            rsPatient.first();
-            populateFields();
+            if (rsPatient.first()){
+             populateFields();
+            }
         } catch (SQLException e) {
             javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Display patient.");
             label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
@@ -248,7 +249,9 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
     }
     
     private void populateFields() {
+        
         try {
+
             txtPatId.setText(rsPatient.getString("patient_id"));
             txtFname.setText(rsPatient.getString("fname"));
             txtLname.setText(rsPatient.getString("lname"));
@@ -264,8 +267,9 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             if (!rsPatient.isLast()) {
-                rsPatient.next();
-                populateFields();
+                if (rsPatient.next()){
+                    populateFields();
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
@@ -279,8 +283,9 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             if (!rsPatient.isFirst()) {
-                rsPatient.previous();
-                populateFields();
+                if (rsPatient.previous()){
+                    populateFields();
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
