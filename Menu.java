@@ -72,10 +72,8 @@ public class Menu extends javax.swing.JFrame {
         menuPatient = new javax.swing.JMenu();
         menuItemAddPat = new javax.swing.JMenuItem();
         menuItemUpdDelPat = new javax.swing.JMenuItem();
-<<<<<<< HEAD
-=======
         menuItemQueryPatofWard = new javax.swing.JMenuItem();
->>>>>>> 63856dd5a273c6add0e97324b275696cb7b6b5f8
+        menuItemQueryPatofWard = new javax.swing.JMenuItem();
         menuDoctor = new javax.swing.JMenu();
         menuItemAddDoc = new javax.swing.JMenuItem();
         menuItemUpdDelDoc = new javax.swing.JMenuItem();
@@ -155,9 +153,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuPatient.add(menuItemUpdDelPat);
-
-<<<<<<< HEAD
-=======
         menuItemQueryPatofWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         menuItemQueryPatofWard.setText("Retrieve Patients of Ward");
         menuItemQueryPatofWard.addActionListener(new java.awt.event.ActionListener() {
@@ -166,8 +161,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuPatient.add(menuItemQueryPatofWard);
-
->>>>>>> 63856dd5a273c6add0e97324b275696cb7b6b5f8
         jMenuBar1.add(menuPatient);
 
         menuDoctor.setText("Doctor");

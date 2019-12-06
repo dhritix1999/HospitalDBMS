@@ -98,8 +98,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemUpdDelPatActionPerformed"/>
               </Events>
             </MenuItem>
-<<<<<<< HEAD
-=======
             <MenuItem class="javax.swing.JMenuItem" name="menuItemQueryPatofWard">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -111,7 +109,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemQueryPatofWardActionPerformed"/>
               </Events>
             </MenuItem>
->>>>>>> 63856dd5a273c6add0e97324b275696cb7b6b5f8
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuDoctor">
