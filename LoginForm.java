@@ -25,10 +25,10 @@ public class LoginForm extends javax.swing.JFrame {
 
         try {
             // read valid username accounts to compare 
-            rs = dbCon.executeStatement("SELECT username, name, password, type FROM users ORDER BY username ");
-
+            rs = dbCon.executeStatement("SELECT username, name, password, type FROM users ORDER BY username");
+          
         } catch (SQLException e) {
-            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Retreiving Login User accounts.");
+            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Retreiving User accounts.");
             label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
             JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -131,9 +131,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         try {
             rs.beforeFirst();
+           
             while (rs.next()) { // loop over the current login user accounts searching for a match 
-                if (rs.getString("username").equals(txtUsername.getText().trim()) && rs.getString("password").equals(txtPassword.getText().trim())) {
-                    boolean isAdmin = rs.getString("type").equals("0");
+            rs.getString("username");
+            if (rs.getString("username").equals(txtUsername.getText().trim()) && rs.getString("password").equals(txtPassword.getText().trim())) {
+                    //boolean isAdmin = rs.getString("type").equals("0");
                     validLogin = true;
                     (new Menu(new LoginUser(rs.getString("username"), rs.getString("name"), rs.getInt("type")))).setVisible(true);
                     this.dispose();

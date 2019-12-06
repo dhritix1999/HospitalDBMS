@@ -53,10 +53,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtName" alignment="0" pref="200" max="32767" attributes="0"/>
-                                  <Component id="cmbUserType" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtUsername" max="32767" attributes="0"/>
                                   <Component id="txtPassword" max="32767" attributes="0"/>
                                   <Component id="txtConfirmPassword" max="32767" attributes="0"/>
+                                  <Component id="cmbUserType" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">

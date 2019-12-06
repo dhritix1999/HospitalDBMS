@@ -35,7 +35,7 @@ public class DeleteWorksFor extends javax.swing.JFrame {
 
         try {
 
-            rsWorks = dbCon.executeStatement("SELECT * FROM treats ORDER BY doc_id ASC ");
+            rsWorks = dbCon.executeStatement("SELECT doc_id, ward_id FROM treats ORDER BY doc_id ASC ");
 
             // populate rest of fields
             rsWorks.beforeFirst();
@@ -154,7 +154,7 @@ public class DeleteWorksFor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(53, 53, 53)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
