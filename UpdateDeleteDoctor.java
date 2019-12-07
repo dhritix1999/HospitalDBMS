@@ -22,7 +22,10 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
      * Creates new form UpdateandDeleteDept
      */
     public UpdateDeleteDoctor() {
+       
         initComponents();
+                 this.setTitle("Update/Delete Doctor");
+        setSize(717, 390);
         this.setLocationRelativeTo(null);
         lblDocIdError.setVisible(false);
         lblFnameError.setVisible(false);
@@ -84,11 +87,14 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
         lblSpecError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Update/Delete Doctor");
         jLabel1.setPreferredSize(new java.awt.Dimension(670, 456));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 10, 720, 58);
 
         btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnUpdate.setText("Update");
@@ -97,6 +103,8 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
+        getContentPane().add(btnUpdate);
+        btnUpdate.setBounds(240, 290, 140, 45);
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnDelete.setText("Delete");
@@ -105,6 +113,8 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDelete);
+        btnDelete.setBounds(390, 290, 130, 45);
 
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnNext.setText("Next >>");
@@ -113,6 +123,8 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
                 btnNextActionPerformed(evt);
             }
         });
+        getContentPane().add(btnNext);
+        btnNext.setBounds(535, 290, 160, 45);
 
         btnPrevious.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnPrevious.setText("<< Previous");
@@ -121,25 +133,41 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
                 btnPreviousActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPrevious);
+        btnPrevious.setBounds(20, 290, 210, 45);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("DOCTOR ID:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(110, 90, 113, 22);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("FIRST NAME:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(100, 130, 119, 22);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("LAST NAME:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(110, 170, 109, 22);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("SALARY:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(140, 250, 77, 22);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("SPECIALTY:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(110, 210, 107, 22);
 
         txtDocId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txtDocId);
+        txtDocId.setBounds(230, 80, 100, 30);
 
         txtFname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txtFname);
+        txtFname.setBounds(230, 120, 200, 30);
 
         txtLname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtLname.addActionListener(new java.awt.event.ActionListener() {
@@ -147,8 +175,12 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
                 txtLnameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtLname);
+        txtLname.setBounds(230, 160, 200, 30);
 
         txtSalary.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txtSalary);
+        txtSalary.setBounds(230, 240, 200, 30);
 
         txtSpec.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtSpec.addActionListener(new java.awt.event.ActionListener() {
@@ -156,107 +188,38 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
                 txtSpecActionPerformed(evt);
             }
         });
+        getContentPane().add(txtSpec);
+        txtSpec.setBounds(230, 200, 200, 30);
 
         lblDocIdError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblDocIdError.setForeground(new java.awt.Color(255, 0, 0));
         lblDocIdError.setText("error label");
+        getContentPane().add(lblDocIdError);
+        lblDocIdError.setBounds(450, 90, 220, 22);
 
         lblLnameError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblLnameError.setForeground(new java.awt.Color(255, 0, 0));
         lblLnameError.setText("error label");
+        getContentPane().add(lblLnameError);
+        lblLnameError.setBounds(450, 160, 220, 22);
 
         lblFnameError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblFnameError.setForeground(new java.awt.Color(255, 0, 0));
         lblFnameError.setText("error label");
+        getContentPane().add(lblFnameError);
+        lblFnameError.setBounds(450, 120, 220, 22);
 
         lblSalaryError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblSalaryError.setForeground(new java.awt.Color(255, 0, 0));
         lblSalaryError.setText("error label");
+        getContentPane().add(lblSalaryError);
+        lblSalaryError.setBounds(450, 250, 220, 22);
 
         lblSpecError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblSpecError.setForeground(new java.awt.Color(255, 0, 0));
         lblSpecError.setText("error label");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnPrevious)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNext)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtFname)
-                                .addComponent(txtLname)
-                                .addComponent(txtSpec)
-                                .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDocId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDocIdError, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addComponent(lblFnameError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblLnameError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblSpecError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblSalaryError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDocIdError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFnameError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLnameError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSpec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(lblSpecError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblSalaryError)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPrevious)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnNext))
-                .addContainerGap())
-        );
+        getContentPane().add(lblSpecError);
+        lblSpecError.setBounds(450, 210, 220, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

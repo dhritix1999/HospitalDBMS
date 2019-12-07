@@ -20,6 +20,7 @@ public class AddDoctor extends javax.swing.JFrame {
 
     public AddDoctor() {
         initComponents();
+        this.setTitle("Add Doctor");
         this.setLocationRelativeTo(null); // center form in screen 
         // set all error labels to invisible
         lblDocIdError.setVisible(false);

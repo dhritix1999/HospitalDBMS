@@ -19,7 +19,10 @@ public class AddWard extends javax.swing.JFrame {
     ResultSet rs;
 
     public AddWard() {
+      
         initComponents();
+           this.setTitle("Add Wards");
+        setSize(766, 300);
         this.setLocationRelativeTo(null); // center form in screen 
         // set all error labels to invisible
         lblWardIdError.setVisible(false);
@@ -50,26 +53,40 @@ public class AddWard extends javax.swing.JFrame {
         lblWardIdError = new javax.swing.JLabel();
         lblWardLocError = new javax.swing.JLabel();
         lblWardNameError = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Employee");
         setResizable(false);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("Add New Ward");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(252, 20, 272, 44);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("WARD ID:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(250, 90, 93, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("WARD NAME:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(220, 130, 123, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("WARD LOCATION:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(180, 170, 166, 30);
 
         txtWardId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txtWardId);
+        txtWardId.setBounds(350, 90, 100, 30);
 
         txtWardName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txtWardName);
+        txtWardName.setBounds(350, 130, 200, 30);
 
         txtWardLoc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtWardLoc.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +94,8 @@ public class AddWard extends javax.swing.JFrame {
                 txtWardLocActionPerformed(evt);
             }
         });
+        getContentPane().add(txtWardLoc);
+        txtWardLoc.setBounds(350, 170, 200, 30);
 
         btnAddNewWard.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnAddNewWard.setText("Add New");
@@ -85,73 +104,30 @@ public class AddWard extends javax.swing.JFrame {
                 btnAddNewWardActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddNewWard);
+        btnAddNewWard.setBounds(350, 210, 170, 45);
 
         lblWardIdError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblWardIdError.setForeground(new java.awt.Color(255, 0, 0));
         lblWardIdError.setText("error label");
+        getContentPane().add(lblWardIdError);
+        lblWardIdError.setBounds(560, 90, 188, 22);
 
         lblWardLocError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblWardLocError.setForeground(new java.awt.Color(255, 0, 0));
         lblWardLocError.setText("error label");
+        getContentPane().add(lblWardLocError);
+        lblWardLocError.setBounds(560, 170, 188, 22);
 
         lblWardNameError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblWardNameError.setForeground(new java.awt.Color(255, 0, 0));
         lblWardNameError.setText("error label");
+        getContentPane().add(lblWardNameError);
+        lblWardNameError.setBounds(560, 130, 188, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtWardName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(txtWardLoc))
-                            .addComponent(txtWardId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblWardNameError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblWardLocError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblWardIdError, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAddNewWard)
-                .addGap(271, 271, 271))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtWardId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWardIdError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtWardName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWardNameError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtWardLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWardLocError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddNewWard)
-                .addGap(0, 23, Short.MAX_VALUE))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospitaldbms/ward.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 90, 128, 128);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -293,6 +269,7 @@ public class AddWard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblWardIdError;
     private javax.swing.JLabel lblWardLocError;
     private javax.swing.JLabel lblWardNameError;

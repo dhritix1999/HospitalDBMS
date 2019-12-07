@@ -22,17 +22,46 @@ public class DeleteTreats extends javax.swing.JFrame {
      * Creates new form AddEmployee
      */
     public DeleteTreats() {
+    
         initComponents();
+             this.setTitle("Delete Treatment");
         this.setLocationRelativeTo(null);
         
-        lblDocIdError.setVisible(false);
-        lblPatIdError.setVisible(false);
+//        lblDocIdError.setVisible(false);
+//        lblPatIdError.setVisible(false);
         lblStartDateError.setVisible(false);
         lblEndDateError.setVisible(false);
         dbCon = new myDBCon();
         getNewData();
     }
 
+     private void RetreiveDocName(String doc_id){
+        
+        try {
+            ResultSet docname = dbCon.executeStatement("select first_name||' '||last_name \"Name\" from doctor where doctor_id = "+doc_id);
+            docname.first();
+            txtDocName2.setText(docname.getString("Name"));
+        } catch (SQLException ex) {
+            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Getting doctor name.");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
+    private void RetreivePatientName(String patient_id){
+        
+        try {
+            ResultSet patientname= dbCon.executeStatement("select fname||' '||lname \"Name\" from patient where patient_id = "+patient_id);
+            patientname.first();
+            txtPatientName.setText(patientname.getString("Name"));
+        } catch (SQLException ex) {
+            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Getting patient name.");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
     private void getNewData() {
 
         try {
@@ -69,12 +98,12 @@ public class DeleteTreats extends javax.swing.JFrame {
         txtDocId = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
         btnPrevious = new javax.swing.JButton();
-        lblDocIdError = new javax.swing.JLabel();
-        lblPatIdError = new javax.swing.JLabel();
         lblStartDateError = new javax.swing.JLabel();
         lblEndDateError = new javax.swing.JLabel();
         ftxtStartDate = new javax.swing.JFormattedTextField();
         ftxtEndDate = new javax.swing.JFormattedTextField();
+        txtPatientName = new javax.swing.JTextField();
+        txtDocName2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update/Delete Employee");
@@ -125,14 +154,6 @@ public class DeleteTreats extends javax.swing.JFrame {
             }
         });
 
-        lblDocIdError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblDocIdError.setForeground(new java.awt.Color(255, 0, 0));
-        lblDocIdError.setText("error label");
-
-        lblPatIdError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblPatIdError.setForeground(new java.awt.Color(255, 0, 0));
-        lblPatIdError.setText("error label");
-
         lblStartDateError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblStartDateError.setForeground(new java.awt.Color(255, 0, 0));
         lblStartDateError.setText("error label");
@@ -159,6 +180,22 @@ public class DeleteTreats extends javax.swing.JFrame {
             }
         });
 
+        txtPatientName.setEditable(false);
+        txtPatientName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPatientName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPatientNameActionPerformed(evt);
+            }
+        });
+
+        txtDocName2.setEditable(false);
+        txtDocName2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtDocName2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDocName2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,22 +211,29 @@ public class DeleteTreats extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext)
+                        .addContainerGap(79, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtDocId, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPatId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(ftxtStartDate)
                             .addComponent(ftxtEndDate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblDocIdError, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(lblPatIdError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblStartDateError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblEndDateError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNext)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblStartDateError, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(lblEndDateError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(51, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDocName2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(jLabel1)
@@ -201,15 +245,19 @@ public class DeleteTreats extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDocIdError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtPatId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPatIdError))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtPatId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDocName2)
+                        .addGap(8, 8, 8)
+                        .addComponent(txtPatientName)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -225,7 +273,7 @@ public class DeleteTreats extends javax.swing.JFrame {
                     .addComponent(btnDelete)
                     .addComponent(btnPrevious)
                     .addComponent(btnNext))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -244,6 +292,8 @@ public class DeleteTreats extends javax.swing.JFrame {
             txtPatId.setText(rsTreats.getString("patients_id"));
             ftxtStartDate.setText(getFormattedDate(rsTreats.getString("first_date")));
             ftxtEndDate.setText(getFormattedDate(rsTreats.getString("last_date")));
+            RetreiveDocName(rsTreats.getString("doctors_id"));
+            RetreivePatientName(rsTreats.getString("patients_id"));
             
             EnableDisableButtons();
         } catch (SQLException ex) {
@@ -326,10 +376,10 @@ public class DeleteTreats extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     void clearErrorLabels() {
-        lblDocIdError.setText("");
-        lblDocIdError.setVisible(false);
-        lblPatIdError.setText("");
-        lblPatIdError.setVisible(false);
+//        lblDocIdError.setText("");
+//        lblDocIdError.setVisible(false);
+//        lblPatIdError.setText("");
+//        lblPatIdError.setVisible(false);
         lblStartDateError.setText("");
         lblStartDateError.setVisible(false);
         lblEndDateError.setText("");
@@ -364,6 +414,14 @@ public class DeleteTreats extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ftxtEndDateActionPerformed
 
+    private void txtPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientNameActionPerformed
+
+    private void txtDocName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocName2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocName2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -376,11 +434,11 @@ public class DeleteTreats extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel lblDocIdError;
     private javax.swing.JLabel lblEndDateError;
-    private javax.swing.JLabel lblPatIdError;
     private javax.swing.JLabel lblStartDateError;
     private javax.swing.JTextField txtDocId;
+    private javax.swing.JTextField txtDocName2;
     private javax.swing.JTextField txtPatId;
+    private javax.swing.JTextField txtPatientName;
     // End of variables declaration//GEN-END:variables
 }

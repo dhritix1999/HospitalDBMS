@@ -16,20 +16,21 @@ import javax.swing.JOptionPane;
 public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
 
     myDBCon dbCon;
-    ResultSet rsPatient;
+    ResultSet rsPatient = null;
     ResultSet rsDoc;
+    ResultSet docname;
 
     /**
      * Creates new form AddEmployee
      */
     public RetrievePatientsOfDoctor() {
+  
         initComponents();
+   this.setTitle("Query - Retrieve Patients of Selected Doctor");
         this.setLocationRelativeTo(null);
-        
         lblDocIdError.setVisible(false);
 
         dbCon = new myDBCon();
-
         //populate doctor id combo box
         try {
             rsDoc = dbCon.executeStatement(
@@ -44,6 +45,20 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
         
     }
 
+     private void RetreiveDocName(String ward_id){
+        
+        try {
+            docname= dbCon.executeStatement("select first_name||' '||last_name \"Name\" from doctor where doctor_id = "+ward_id);
+            docname.first();
+            txtDocName.setText(docname.getString("Name"));
+        } catch (SQLException ex) {
+            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Getting doctor name.");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
     private void pullPatientDataForGivenDocId(String doc_id) {
 
         try {
@@ -52,7 +67,7 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
                     "from patient, treats " +
                     "where patients_id = patient_id and doctors_id = " +
                     doc_id);
-
+           
             // populate fields
             rsPatient.beforeFirst();
             rsPatient.first();
@@ -90,6 +105,7 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
         lblDocIdError = new javax.swing.JLabel();
         cmbDocId = new javax.swing.JComboBox<>();
         txtWardId = new javax.swing.JTextField();
+        txtDocName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update/Delete Employee");
@@ -168,12 +184,25 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
         lblDocIdError.setText("error label");
 
         cmbDocId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbDocId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDocIdActionPerformed(evt);
+            }
+        });
 
         txtWardId.setEditable(false);
         txtWardId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtWardId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWardIdActionPerformed(evt);
+            }
+        });
+
+        txtDocName.setEditable(false);
+        txtDocName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtDocName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDocNameActionPerformed(evt);
             }
         });
 
@@ -199,22 +228,21 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(167, 167, 167)
-                        .addComponent(lblDocIdError, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDocName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblDocIdError, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtPatId, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtFname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(txtLname, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ftxtDateOfBirth)
+                        .addComponent(txtWardId, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtPatId, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtFname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(txtLname, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ftxtDateOfBirth)
-                                .addComponent(txtWardId, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRetrieve, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNext)))
-                        .addGap(0, 23, Short.MAX_VALUE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(btnRetrieve, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +252,8 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(lblDocIdError)
-                    .addComponent(cmbDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDocName))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -293,6 +322,12 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
         }
     }
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (rsPatient == null) {
+            javax.swing.JLabel label = new javax.swing.JLabel("Click on Retrive first");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         MoveNext();
     }//GEN-LAST:event_btnNextActionPerformed
 
@@ -326,6 +361,13 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
     }
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
         // TODO add your handling code here:
+        //select option first
+        if (rsPatient == null) {
+            javax.swing.JLabel label = new javax.swing.JLabel("Click on Retrive first");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         MovePrevious();
     }//GEN-LAST:event_btnPreviousActionPerformed
 
@@ -335,12 +377,41 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
             lblDocIdError.setVisible(true);
             return;
         }
-        pullPatientDataForGivenDocId(cmbDocId.getSelectedItem().toString());
+        
+         ResultSet count = null;
+        clearfields();
+      
+        try {
+           count = dbCon.executeStatement("SELECT COUNT(*) FROM treats WHERE doctors_id = "+ (cmbDocId.getSelectedItem().toString()));
+        count.beforeFirst();
+        count.first();
+            if (count.getInt("COUNT(*)") == 0) {
+            javax.swing.JLabel label = new javax.swing.JLabel("No patient assigned to this Doctor");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+        } catch (SQLException ex) {
+              javax.swing.JLabel label = new javax.swing.JLabel("SQL ERROR");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR);
+        }
+        
+          pullPatientDataForGivenDocId(cmbDocId.getSelectedItem().toString());
+         
     }//GEN-LAST:event_btnRetrieveActionPerformed
 
     void clearErrorLabels() {
         lblDocIdError.setText("");
         lblDocIdError.setVisible(false);
+    }
+    
+    void clearfields(){
+        txtPatId.setText("");
+        txtFname.setText("");
+        txtLname.setText("");
+        ftxtDateOfBirth.setText("");
+        txtWardId.setText("");
     }
 
     public boolean isInteger(String s) {
@@ -370,6 +441,15 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtWardIdActionPerformed
 
+    private void txtDocNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocNameActionPerformed
+
+    private void cmbDocIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDocIdActionPerformed
+        // TODO add your handling code here:
+        RetreiveDocName(cmbDocId.getSelectedItem().toString());
+    }//GEN-LAST:event_cmbDocIdActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
@@ -385,6 +465,7 @@ public class RetrievePatientsOfDoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblDocIdError;
+    private javax.swing.JTextField txtDocName;
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextField txtLname;
     private javax.swing.JTextField txtPatId;

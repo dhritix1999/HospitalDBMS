@@ -19,7 +19,9 @@ public class LoginForm extends javax.swing.JFrame {
      * Creates new form LoginForm
      */
     public LoginForm() {
+      
         initComponents();
+           this.setTitle("Login Form");
         setSize(612,330);
         this.setLocationRelativeTo(null); // center the login form in the screen 
         dbCon = new myDBCon();

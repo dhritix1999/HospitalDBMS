@@ -16,7 +16,10 @@ public class AddPatient extends javax.swing.JFrame {
     ResultSet rs;
 
     public AddPatient() {
+         
         initComponents();
+        this.setTitle("Add Patient");
+         setSize(800, 330);
         this.setLocationRelativeTo(null); // center form in screen 
         // set all error labels to invisible
         lblPatIdError.setVisible(false);
@@ -69,29 +72,46 @@ public class AddPatient extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Employee");
         setResizable(false);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add New Patient");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 8, 782, 44);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("PATIENT ID:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(192, 62, 115, 22);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("FIRST NAME:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(188, 98, 119, 22);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("LAST NAME:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(198, 134, 109, 22);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("WARD ID:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(214, 204, 93, 22);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("DATE OF BIRTH:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(159, 171, 148, 22);
 
         txtPatId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txtPatId);
+        txtPatId.setBounds(325, 58, 100, 30);
 
         txtFname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txtFname);
+        txtFname.setBounds(325, 94, 248, 30);
 
         txtLname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtLname.addActionListener(new java.awt.event.ActionListener() {
@@ -99,8 +119,12 @@ public class AddPatient extends javax.swing.JFrame {
                 txtLnameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtLname);
+        txtLname.setBounds(325, 130, 248, 30);
 
         cmbWard.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(cmbWard);
+        cmbWard.setBounds(325, 204, 80, 32);
 
         btnAddNewPat.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnAddNewPat.setText("Add New");
@@ -109,22 +133,32 @@ public class AddPatient extends javax.swing.JFrame {
                 btnAddNewPatActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddNewPat);
+        btnAddNewPat.setBounds(325, 250, 170, 45);
 
         lblPatIdError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblPatIdError.setForeground(new java.awt.Color(255, 0, 0));
         lblPatIdError.setText("error label");
+        getContentPane().add(lblPatIdError);
+        lblPatIdError.setBounds(586, 66, 196, 22);
 
         lblLnameError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblLnameError.setForeground(new java.awt.Color(255, 0, 0));
         lblLnameError.setText("error label");
+        getContentPane().add(lblLnameError);
+        lblLnameError.setBounds(586, 134, 196, 22);
 
         lblFnameError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblFnameError.setForeground(new java.awt.Color(255, 0, 0));
         lblFnameError.setText("error label");
+        getContentPane().add(lblFnameError);
+        lblFnameError.setBounds(586, 98, 196, 22);
 
         lblDateOfBirthError.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         lblDateOfBirthError.setForeground(new java.awt.Color(255, 0, 0));
         lblDateOfBirthError.setText("error label");
+        getContentPane().add(lblDateOfBirthError);
+        lblDateOfBirthError.setBounds(586, 174, 196, 22);
 
         ftxtDateOfBirth.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d-MMM-yyyy"))));
         ftxtDateOfBirth.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -133,106 +167,14 @@ public class AddPatient extends javax.swing.JFrame {
                 ftxtDateOfBirthActionPerformed(evt);
             }
         });
+        getContentPane().add(ftxtDateOfBirth);
+        ftxtDateOfBirth.setBounds(325, 166, 150, 32);
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(11, 86, 0, 0);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hospitaldbms/patient-icon.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jLabel7))
-                                    .addComponent(jLabel8))
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ftxtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPatId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblPatIdError, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblFnameError, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblLnameError, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblDateOfBirthError, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAddNewPat)
-                                    .addComponent(cmbWard, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(6, 6, 6))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(lblPatIdError)
-                        .addGap(10, 10, 10)
-                        .addComponent(lblFnameError)
-                        .addGap(14, 14, 14)
-                        .addComponent(lblLnameError))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel7))
-                            .addComponent(jLabel8)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPatId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDateOfBirthError)
-                            .addComponent(ftxtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbWard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddNewPat)
-                .addGap(12, 12, 12))
-        );
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(17, 70, 128, 128);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

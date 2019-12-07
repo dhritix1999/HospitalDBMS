@@ -22,7 +22,9 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu(LoginUser user) {
+      
         initComponents();
+           this.setTitle("Hospital Menu");
         this.setSize(620, 480);
         this.setLocationRelativeTo(null); // center form in screen 
 
@@ -416,7 +418,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemRetrieveDocStatsActionPerformed
 
     private void menuItemQueryPatofWardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQueryPatofWardActionPerformed
-
         addLoggingEntry("Query Patients", "Patient");
         (new RetrievePatientsOfWard()).setVisible(true);
     }//GEN-LAST:event_menuItemQueryPatofWardActionPerformed

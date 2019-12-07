@@ -23,7 +23,9 @@ public class RetrieveDoctorSalaryStats extends javax.swing.JFrame {
     ResultSet rs;
 
     public RetrieveDoctorSalaryStats() {
+        
         initComponents();
+         this.setTitle("Query - Retrieve Salary Status of Doctors");
         this.setLocationRelativeTo(null); // center form in screen 
 
         dbCon = new myDBCon();

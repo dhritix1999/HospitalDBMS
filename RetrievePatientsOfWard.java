@@ -16,16 +16,18 @@ import javax.swing.JOptionPane;
 public class RetrievePatientsOfWard extends javax.swing.JFrame {
 
     myDBCon dbCon;
-    ResultSet rsPatient;
+    ResultSet rsPatient = null;
     ResultSet rsWard;
+    ResultSet wardname;
 
     /**
      * Creates new form AddEmployee
      */
     public RetrievePatientsOfWard() {
+      
         initComponents();
-        this.setLocationRelativeTo(null);
-        
+          this.setTitle("Query - Retrieve Patients of Selected Ward");
+        this.setLocationRelativeTo(null);  
         lblWardIdError.setVisible(false);
 
         dbCon = new myDBCon();
@@ -41,17 +43,29 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+    
+    private void RetreiveWardName(String ward_id){
+        
+        try {
+            wardname = dbCon.executeStatement("select ward_name from ward where ward_id ="+ward_id);
+            wardname.first();
+            txtWardName.setText(wardname.getString("ward_name"));
+        } catch (SQLException ex) {
+            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Getting ward name.");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         
     }
 
-    private void pullPatientDataForGivenDocId(String ward_id) {
+    private void pullPatientDataForGivenWardId(String ward_id) {
 
         try {
             rsPatient = dbCon.executeStatement("select distinct patient_id, fname, lname, date_of_birth, ward_id" +
                     " from patient" +
                     " where ward_id = " +
-                    ward_id);
-
+                    ward_id);  
             // populate fields
             rsPatient.beforeFirst();
             if (rsPatient.first()){
@@ -88,6 +102,7 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lblWardIdError = new javax.swing.JLabel();
         cmbWardId = new javax.swing.JComboBox<>();
+        txtWardName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update/Delete Employee");
@@ -163,6 +178,19 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         lblWardIdError.setText("error label");
 
         cmbWardId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbWardId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbWardIdActionPerformed(evt);
+            }
+        });
+
+        txtWardName.setEditable(false);
+        txtWardName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtWardName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtWardNameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,10 +212,6 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbWardId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(142, 142, 142)
-                        .addComponent(lblWardIdError, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtPatId, javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,18 +222,25 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
                                 .addComponent(btnRetrieve, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnNext)))
-                        .addGap(0, 27, Short.MAX_VALUE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addContainerGap(79, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmbWardId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtWardName, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblWardIdError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(lblWardIdError)
-                    .addComponent(cmbWardId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(lblWardIdError)
+                        .addComponent(cmbWardId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtWardName))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -256,7 +287,6 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
             txtFname.setText(rsPatient.getString("fname"));
             txtLname.setText(rsPatient.getString("lname"));
             ftxtDateOfBirth.setText(getFormattedDate(rsPatient.getString("date_of_birth")));
-            
             EnableDisableButtons();
         } catch (SQLException ex) {
             Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
@@ -276,6 +306,12 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         }
     }
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if (rsPatient == null) {
+            javax.swing.JLabel label = new javax.swing.JLabel("Click on Retrive first");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         MoveNext();
     }//GEN-LAST:event_btnNextActionPerformed
 
@@ -309,7 +345,12 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         }
     }
     private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousActionPerformed
-        // TODO add your handling code here:
+       if (rsPatient == null) {
+            javax.swing.JLabel label = new javax.swing.JLabel("Click on Retrive first");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         MovePrevious();
     }//GEN-LAST:event_btnPreviousActionPerformed
 
@@ -319,12 +360,37 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
             lblWardIdError.setVisible(true);
             return;
         }
-        pullPatientDataForGivenDocId(cmbWardId.getSelectedItem().toString());
+        ResultSet count = null;
+        clearFields();
+       
+        try {
+           count = dbCon.executeStatement("SELECT COUNT(*) FROM patient WHERE ward_id = "+ (cmbWardId.getSelectedItem().toString()));
+        count.beforeFirst();
+        count.first();
+            if (count.getInt("COUNT(*)") == 0) {
+            javax.swing.JLabel label = new javax.swing.JLabel("No patients are currently in this Ward");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+        } catch (SQLException ex) {
+              javax.swing.JLabel label = new javax.swing.JLabel("SQL ERROR");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR);
+        }
+        
+        pullPatientDataForGivenWardId(cmbWardId.getSelectedItem().toString());
     }//GEN-LAST:event_btnRetrieveActionPerformed
 
     void clearErrorLabels() {
         lblWardIdError.setText("");
         lblWardIdError.setVisible(false);
+    }
+    void clearFields(){
+      txtPatId.setText("");
+      txtFname.setText("");
+      txtLname.setText("");
+      ftxtDateOfBirth.setText("");
     }
 
     public boolean isInteger(String s) {
@@ -350,6 +416,15 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ftxtDateOfBirthActionPerformed
 
+    private void txtWardNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWardNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtWardNameActionPerformed
+
+    private void cmbWardIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbWardIdActionPerformed
+        // TODO add your handling code here:
+         RetreiveWardName(cmbWardId.getSelectedItem().toString());
+    }//GEN-LAST:event_cmbWardIdActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
@@ -367,5 +442,6 @@ public class RetrievePatientsOfWard extends javax.swing.JFrame {
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextField txtLname;
     private javax.swing.JTextField txtPatId;
+    private javax.swing.JTextField txtWardName;
     // End of variables declaration//GEN-END:variables
 }

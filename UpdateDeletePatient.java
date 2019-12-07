@@ -23,7 +23,9 @@ public class UpdateDeletePatient extends javax.swing.JFrame {
      * Creates new form AddEmployee
      */
     public UpdateDeletePatient() {
+        
         initComponents();
+         this.setTitle("Update/Delete Patient");
         this.setLocationRelativeTo(null);
         lblPatIdError.setVisible(false);
         lblFnameError.setVisible(false);

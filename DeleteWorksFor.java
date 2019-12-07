@@ -22,7 +22,9 @@ public class DeleteWorksFor extends javax.swing.JFrame {
      * Creates new form AddEmployee
      */
     public DeleteWorksFor() {
+      
         initComponents();
+           this.setTitle("Delete WorksFor");
         this.setLocationRelativeTo(null);
         
         lblDocName.setVisible(false);
@@ -31,6 +33,34 @@ public class DeleteWorksFor extends javax.swing.JFrame {
         getNewData();
     }
 
+     private void RetreiveDocName(String doc_id){
+        
+        try {
+            ResultSet docname = dbCon.executeStatement("select first_name||' '||last_name \"Name\" from doctor where doctor_id = "+doc_id);
+            docname.first();
+            txtDocName.setText(docname.getString("Name"));
+        } catch (SQLException ex) {
+            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Getting doctor name.");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
+    private void RetreiveWardName(String ward_id){
+        
+        try {
+            ResultSet patientname= dbCon.executeStatement("select ward_name from ward where ward_id = "+ward_id);
+            patientname.first();       
+            txtWardName.setText(patientname.getString("ward_name"));
+            
+        } catch (SQLException ex) {
+            javax.swing.JLabel label = new javax.swing.JLabel("SQL Error - Getting ward name.");
+            label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
     private void getNewData() {
 
         try {
@@ -68,6 +98,8 @@ public class DeleteWorksFor extends javax.swing.JFrame {
         btnPrevious = new javax.swing.JButton();
         lblDocName = new javax.swing.JLabel();
         lblWardName = new javax.swing.JLabel();
+        txtWardName = new javax.swing.JTextField();
+        txtDocName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update/Delete Employee");
@@ -113,10 +145,24 @@ public class DeleteWorksFor extends javax.swing.JFrame {
         });
 
         lblDocName.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblDocName.setForeground(new java.awt.Color(0, 0, 0));
 
         lblWardName.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        lblWardName.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtWardName.setEditable(false);
+        txtWardName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtWardName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtWardNameActionPerformed(evt);
+            }
+        });
+
+        txtDocName.setEditable(false);
+        txtDocName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtDocName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDocNameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,14 +181,18 @@ public class DeleteWorksFor extends javax.swing.JFrame {
                             .addComponent(txtDocId, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtWardId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblDocName, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtWardName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDocName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDocName, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                             .addComponent(lblWardName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNext)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -154,21 +204,24 @@ public class DeleteWorksFor extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDocName))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDocName)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtDocId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblDocName)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtWardId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWardName))
+                    .addComponent(lblWardName)
+                    .addComponent(txtWardName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
                     .addComponent(btnPrevious)
                     .addComponent(btnNext))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         pack();
@@ -179,7 +232,8 @@ public class DeleteWorksFor extends javax.swing.JFrame {
         try {
             txtDocId.setText(rsWorks.getString("doc_id"));
             txtWardId.setText(rsWorks.getString("wards_id"));
-            
+            RetreiveDocName(rsWorks.getString("doc_id"));
+            RetreiveWardName(rsWorks.getString("wards_id"));
 //            String DocName = "SELECT first_name, last_name FROM DOCTOR WHERE doctor_id = "+rsWorks.getString("doc_id");
 //            ResultSet Doc = dbCon.executeStatement(DocName);
 //            lblDocName.setText(Doc.getString("first_name"));
@@ -193,6 +247,8 @@ public class DeleteWorksFor extends javax.swing.JFrame {
             Logger.getLogger(UpdateDeletePatient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+  
 
     private void MoveNext() {
         try {
@@ -266,6 +322,14 @@ public class DeleteWorksFor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void txtWardNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWardNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtWardNameActionPerformed
+
+    private void txtDocNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocNameActionPerformed
+
     void clearErrorLabels() {
         lblDocName.setText("");
         lblDocName.setVisible(false);
@@ -305,6 +369,8 @@ public class DeleteWorksFor extends javax.swing.JFrame {
     private javax.swing.JLabel lblDocName;
     private javax.swing.JLabel lblWardName;
     private javax.swing.JTextField txtDocId;
+    private javax.swing.JTextField txtDocName;
     private javax.swing.JTextField txtWardId;
+    private javax.swing.JTextField txtWardName;
     // End of variables declaration//GEN-END:variables
 }

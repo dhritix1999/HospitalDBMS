@@ -25,7 +25,9 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
     ResultSet rs;
 
     public UpdateDeleteLoginUser() {
+       
         initComponents();
+          this.setTitle("Update/Delete Login User");
         // center form in screen 
         this.setLocationRelativeTo(null);
         // set all error labels to invisible
@@ -184,7 +186,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
                                     .addComponent(txtUsername)
                                     .addComponent(txtPassword)
                                     .addComponent(txtConfirmPassword)
-                                    .addComponent(cmbUserType, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbUserType, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblPasswordError, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
