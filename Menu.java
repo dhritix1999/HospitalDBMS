@@ -92,6 +92,7 @@ public class Menu extends javax.swing.JFrame {
         menuUser = new javax.swing.JMenu();
         menuItemAddUser = new javax.swing.JMenuItem();
         menuItemUpdDelUser = new javax.swing.JMenuItem();
+        menuItemLogging = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -301,6 +302,15 @@ public class Menu extends javax.swing.JFrame {
         });
         menuUser.add(menuItemUpdDelUser);
 
+        menuItemLogging.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        menuItemLogging.setText("View Logging Table");
+        menuItemLogging.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemLoggingActionPerformed(evt);
+            }
+        });
+        menuUser.add(menuItemLogging);
+
         jMenuBar1.add(menuUser);
 
         setJMenuBar(jMenuBar1);
@@ -413,6 +423,10 @@ public class Menu extends javax.swing.JFrame {
         (new RetrievePatientsOfWard()).setVisible(true);
     }//GEN-LAST:event_menuItemQueryPatofWardActionPerformed
 
+    private void menuItemLoggingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLoggingActionPerformed
+        (new RetrieveLoggingTable()).setVisible(true);
+    }//GEN-LAST:event_menuItemLoggingActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -429,6 +443,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemDelWorksFor;
     private javax.swing.JMenuItem menuItemDeleteTreatment;
     private javax.swing.JMenuItem menuItemExit;
+    private javax.swing.JMenuItem menuItemLogging;
     private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenuItem menuItemQueryPatofDoc;
     private javax.swing.JMenuItem menuItemQueryPatofWard;
