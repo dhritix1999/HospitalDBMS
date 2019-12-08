@@ -331,6 +331,25 @@ public class UpdateDeletePatient extends javax.swing.JFrame {
         MovePrevious();
     }//GEN-LAST:event_btnPreviousActionPerformed
 
+    
+    private void cascadePatientDeletion(String patid) throws SQLException {
+        String stmtSQL = "DELETE treats WHERE patients_id = " + patid;
+        dbCon.executePrepared(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+
+    }
+    
+    private boolean isPatientBeingTreated(String patid) throws SQLException {
+        boolean hasData = false;
+        String stmtSQL = "SELECT patients_id FROM treats WHERE patients_id = " + patid;
+        ResultSet rs = dbCon.executeStatement(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+        hasData = rs.isBeforeFirst();
+
+        return hasData;
+    }
+    
+    
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         //ask confirmation
@@ -339,6 +358,7 @@ public class UpdateDeletePatient extends javax.swing.JFrame {
             return;
         }
         try {
+            cascadePatientDeletion(txtPatId.getText().trim());
             // make the result set scrolable forward/backward updatable
             String prepSQL = "DELETE patient WHERE patient_id = " + txtPatId.getText().trim();
             int result = dbCon.executePrepared(prepSQL);
@@ -455,6 +475,13 @@ public class UpdateDeletePatient extends javax.swing.JFrame {
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.INFORMATION_MESSAGE);
                     return;
+                }
+                
+                if (!txtPatId.getText().trim().equals(rsPatient.getString("patient_id"))) {
+                    if (isPatientBeingTreated(rsPatient.getString("patient_id"))) {
+                        JOptionPane.showMessageDialog(null, "Cant change id of patient on treatment");
+                        return;
+                    }
                 }
                 
                 String prepSQL = "UPDATE patient SET patient_id = " + 

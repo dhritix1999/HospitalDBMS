@@ -11,10 +11,7 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- *
- * @author wissam
- */
+
 public class UpdateDeleteLoginUser extends javax.swing.JFrame {
 
     /**
@@ -245,13 +242,18 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
         try {
             String str;
             // populate deptno field
-            rs = dbCon.executeStatement("SELECT Username, Name, l.Type, Description FROM users l join UserType u on  l.type = u.type ORDER BY username ASC");
+            rs = dbCon.executeStatement("SELECT username, name, type from users ORDER BY username ASC");
 
 //populate usertype combo
-            ResultSet rsUserType = dbCon.executeStatement("SELECT Type, Description FROM UserType ORDER BY Type");
+            ResultSet rsUserType = dbCon.executeStatement("SELECT Type FROM users ORDER BY Type");
             cmbUserType.removeAllItems();
             while (rsUserType.next()) {
-                cmbUserType.addItem(rsUserType.getString("Description"));
+                if (rsUserType.getInt("type") == 0){
+                    cmbUserType.addItem("Administrator");
+                }
+                else{
+                    cmbUserType.addItem("Normal");
+                }
             }
 
             // populate rest of fields
@@ -383,11 +385,18 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
 
     private boolean Duplicate(String usernameString) throws SQLException
     {        boolean duplicate = false;
-            String splt = "SELECT username FROM LoginUsers WHERE LOWER(username) = LOWER('" + usernameString + "')";
-            rs = dbCon.executeStatement(splt);
+            String splt = "SELECT username FROM users WHERE LOWER(username) = LOWER('" + usernameString + "')";
+            ResultSet rs = dbCon.executeStatement(splt);
             duplicate = rs.isBeforeFirst();
             return duplicate;
     }
+    
+    private void cascadeUserDeletion(String username) throws SQLException {
+        String stmtSQL = "DELETE logging WHERE usr = '" + username + "'";
+        dbCon.executePrepared(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+    }
+
     
     private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
         // TODO add your handling code here:
@@ -403,16 +412,18 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
             if (isValidData()) {
                //if username exists then error message and return
              if (!txtUsername.getText().equals(rs.getString("username")) && Duplicate(txtUsername.getText())) {
-             
-                 
-                    lblUsernameError.setText("Username already exits.");
-                    lblUsernameError.setVisible(true);
-                    
+                lblUsernameError.setText("Username already exits.");
+                lblUsernameError.setVisible(true);
                 javax.swing.JLabel label = new javax.swing.JLabel("Username already exists");
                 label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                 JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.ERROR_MESSAGE);
                 return;
              
+             }
+             
+             //if username changes, delete old logs
+             if (!txtUsername.getText().equals(rs.getString("username"))){
+                 cascadeUserDeletion(rs.getString("username"));
              }
       
                 // add new user
@@ -423,7 +434,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
                     userType = 1;
                 }
 
-                    String prepSQL = "UPDATE LoginUsers SET Username = '"+
+                    String prepSQL = "UPDATE users SET Username = '"+
                             txtUsername.getText() + "', Password = '"+
                             txtPassword.getText() + "', Name = '"+
                             txtName.getText()+"', Type = "+
@@ -451,6 +462,7 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
             }
         } catch (SQLException e) {
             //error updating login user
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error Updating Login User");
         }
     }//GEN-LAST:event_btnUpdateUserActionPerformed
@@ -467,8 +479,9 @@ public class UpdateDeleteLoginUser extends javax.swing.JFrame {
             return;
         }
         try {
+            cascadeUserDeletion(txtUsername.getText().trim());
             // make the result set scrolable forward/backward updatable
-            String prepSQL = "DELETE LoginUsers WHERE username = '" + txtUsername.getText().trim() + "'";
+            String prepSQL = "DELETE users WHERE username = '" + txtUsername.getText().trim() + "'";
             int result = dbCon.executePrepared(prepSQL);
             if (result > 0) {
                 //succesfull deletion

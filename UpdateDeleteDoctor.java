@@ -373,6 +373,29 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
         MoveNext();
     }//GEN-LAST:event_btnNextActionPerformed
 
+    
+    private boolean isDocTreatingPatient(String docid) throws SQLException {
+        boolean hasData = false;
+        String stmtSQL = "SELECT doctors_id FROM treats WHERE doctors_id = " + docid;
+        ResultSet rs = dBCon.executeStatement(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+        hasData = rs.isBeforeFirst();
+
+        return hasData;
+    }
+    
+    private boolean isDocWorkingForWard(String docid) throws SQLException {
+        boolean hasData = false;
+        String stmtSQL = "SELECT doc_id FROM works_for WHERE doc_id = " + docid;
+        ResultSet rs = dBCon.executeStatement(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+        hasData = rs.isBeforeFirst();
+
+        return hasData;
+    }
+
+    
+    
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?", "Confirm deletion", JOptionPane.WARNING_MESSAGE);
@@ -381,6 +404,15 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
         }
 
         try {
+            if (isDocTreatingPatient(txtDocId.getText())) {
+                JOptionPane.showMessageDialog(null, "Can't delete doctor having treatment");
+                return;
+            }
+            if (isDocWorkingForWard(txtDocId.getText())) {
+                JOptionPane.showMessageDialog(null, "Remove assignment from ward first");
+                return;
+            }
+            
             // make the result set scrolable forward/backward updatable
 
             String statement = "DELETE doctor WHERE doctor_id = " + txtDocId.getText().trim();
@@ -431,6 +463,18 @@ public class UpdateDeleteDoctor extends javax.swing.JFrame {
                     label.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
                     JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.INFORMATION_MESSAGE);
                     return;
+                }
+                
+                //If id changed, stop it
+                if (!txtDocId.getText().trim().equals(rsDoc.getString("doctor_id"))) {
+                    if (isDocTreatingPatient(rsDoc.getString("doctor_id"))) {
+                        JOptionPane.showMessageDialog(null, "Can't update doctorid having treatment");
+                        return;
+                    }
+                    if (isDocWorkingForWard(rsDoc.getString("doctor_id"))) {
+                        JOptionPane.showMessageDialog(null, "Remove assignment from ward first");
+                        return;
+                    }
                 }
 
                 String statement = "UPDATE doctor SET doctor_id = " + 

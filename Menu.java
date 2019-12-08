@@ -75,7 +75,6 @@ public class Menu extends javax.swing.JFrame {
         menuItemAddPat = new javax.swing.JMenuItem();
         menuItemUpdDelPat = new javax.swing.JMenuItem();
         menuItemQueryPatofWard = new javax.swing.JMenuItem();
-        menuItemQueryPatofWard = new javax.swing.JMenuItem();
         menuDoctor = new javax.swing.JMenu();
         menuItemAddDoc = new javax.swing.JMenuItem();
         menuItemUpdDelDoc = new javax.swing.JMenuItem();
@@ -84,7 +83,6 @@ public class Menu extends javax.swing.JFrame {
         menuWard = new javax.swing.JMenu();
         menuItemAddWard = new javax.swing.JMenuItem();
         menuItemUpdDelWard = new javax.swing.JMenuItem();
-        menuItemQueryPatofWard = new javax.swing.JMenuItem();
         menuTreats = new javax.swing.JMenu();
         menuItemAddTreats = new javax.swing.JMenuItem();
         menuItemDeleteTreatment = new javax.swing.JMenuItem();
@@ -155,6 +153,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuPatient.add(menuItemUpdDelPat);
+
         menuItemQueryPatofWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         menuItemQueryPatofWard.setText("Retrieve Patients of Ward");
         menuItemQueryPatofWard.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +162,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuPatient.add(menuItemQueryPatofWard);
+
         jMenuBar1.add(menuPatient);
 
         menuDoctor.setText("Doctor");
@@ -227,15 +227,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuWard.add(menuItemUpdDelWard);
-
-        menuItemQueryPatofWard.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        menuItemQueryPatofWard.setText("Retrieve Patients of Ward");
-        menuItemQueryPatofWard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemQueryPatofWardActionPerformed(evt);
-            }
-        });
-        menuWard.add(menuItemQueryPatofWard);
 
         jMenuBar1.add(menuWard);
 

@@ -269,6 +269,17 @@ public class UpdateDeleteWard extends javax.swing.JFrame {
         MovePrevious();
     }//GEN-LAST:event_btnPreviousActionPerformed
 
+    private void cascadeWardUpdation(String oldWardId, String newWardID) throws SQLException {
+        String stmtSQL = "UPDATE patient SET ward_id = "
+                + newWardID + " WHERE ward_id = " + oldWardId;
+        dbCon.executePrepared(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+        String stmtSQL2 = "UPDATE works_for SET wards_id = "
+                + newWardID + " WHERE wards_id = " + oldWardId;
+        dbCon.executePrepared(stmtSQL2);
+    }
+    
+    
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         //ask confirmation
@@ -277,6 +288,14 @@ public class UpdateDeleteWard extends javax.swing.JFrame {
             return;
         }
         try {
+            if (isPatientInWard(txtWardId.getText())){
+                JOptionPane.showMessageDialog(null, "Relocate patients of ward first");
+                return;
+            }
+            if (isDocWorkingForWard(txtWardId.getText())) {
+                JOptionPane.showMessageDialog(null, "Relocate doctors working for this ward first");
+                return;
+            }
             // make the result set scrolable forward/backward updatable
             String prepSQL = "DELETE ward WHERE ward_id = " + txtWardId.getText().trim();
             int result = dbCon.executePrepared(prepSQL);
@@ -367,6 +386,26 @@ public class UpdateDeleteWard extends javax.swing.JFrame {
         return isduplicate;
     }
     
+    private boolean isPatientInWard(String wardid) throws SQLException {
+        boolean hasData = false;
+        String stmtSQL = "SELECT ward_id FROM patient WHERE ward_id = " + wardid;
+        ResultSet rs = dbCon.executeStatement(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+        hasData = rs.isBeforeFirst();
+
+        return hasData;
+    }
+    
+    private boolean isDocWorkingForWard(String wardid) throws SQLException {
+        boolean hasData = false;
+        String stmtSQL = "SELECT wards_id FROM works_for WHERE wards_id = " + wardid;
+        ResultSet rs = dbCon.executeStatement(stmtSQL);
+        // isBeforeFirst() returns false if there are no data in the resultset
+        hasData = rs.isBeforeFirst();
+
+        return hasData;
+    }
+    
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         //ask for confirmation
@@ -387,8 +426,18 @@ public class UpdateDeleteWard extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
-                
-                
+                //If id changed, stop it
+                if (!txtWardId.getText().trim().equals(rsWard.getString("ward_id"))){
+                    if (isPatientInWard(rsWard.getString("ward_id"))) {
+                        JOptionPane.showMessageDialog(null, "Relocate patients of ward first");
+                        return;
+                    }
+                    if (isDocWorkingForWard(rsWard.getString("ward_id"))) {
+                        JOptionPane.showMessageDialog(null, "Relocate doctors working for this ward first");
+                        return;
+                    }
+                }
+
                 String prepSQL = "UPDATE ward SET ward_id = " + 
                         txtWardId.getText().trim() + 
                         ", ward_name = '" + txtWardName.getText().trim().toUpperCase() +
@@ -414,6 +463,7 @@ public class UpdateDeleteWard extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             //error updating eployee
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error updating ward.");
 
         }
