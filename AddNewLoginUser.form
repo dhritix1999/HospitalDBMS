@@ -60,8 +60,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtPassword" max="32767" attributes="0"/>
-                          <Component id="txtConfirmPassword" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="cmbUserType" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="txtConfirmPassword" pref="200" max="32767" attributes="0"/>
+                          <Component id="cmbUserType" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">

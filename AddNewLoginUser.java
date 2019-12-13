@@ -170,8 +170,8 @@ public class AddNewLoginUser extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPassword)
-                            .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbUserType, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(cmbUserType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblPasswordError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -312,7 +312,7 @@ public class AddNewLoginUser extends javax.swing.JFrame {
             if (isValidData()) {
 
                 // verify that username does not exist
-                rs = dbCon.executeStatement("SELECT username FROM LoginUsers WHERE LOWER(username) = LOWER('" + txtUsername.getText().trim() + "')");
+                rs = dbCon.executeStatement("SELECT username FROM Users WHERE LOWER(username) = LOWER('" + txtUsername.getText().trim() + "')");
 
                 if (rs.isBeforeFirst()) { //check if resultset contains data, isBeforeFirst() returns false if no data in resultset 
                     lblUsernameError.setText("Username already exits.");
@@ -331,7 +331,7 @@ public class AddNewLoginUser extends javax.swing.JFrame {
                     userType = 1;
                 }
 
-                String prepSQL = "INSERT INTO LoginUsers (Username, Password, Name, Type) VALUES ("
+                String prepSQL = "INSERT INTO Users (Username, Password, Name, Type) VALUES ("
                         + "'" + txtUsername.getText().trim() + "', "
                         + "'" + txtPassword.getText() + "', "
                         + "'" + txtName.getText().trim() +"', "
