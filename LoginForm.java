@@ -123,7 +123,7 @@ public class LoginForm extends javax.swing.JFrame {
             if (rs.getString("username").equals(txtUsername.getText().trim()) && rs.getString("password").equals(txtPassword.getText().trim())) {
                     //boolean isAdmin = rs.getString("type").equals("0");
                     validLogin = true;
-                  (new Menu(new LoginUser(rs.getString("username"), rs.getString("name"), rs.getInt("type")))).setVisible(true);
+                    (new Menu(new LoginUser(rs.getString("username"), rs.getString("name"), rs.getInt("type")))).setVisible(true);
                     this.dispose();
                 }
             }
