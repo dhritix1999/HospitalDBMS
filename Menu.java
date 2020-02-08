@@ -339,6 +339,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         addLoggingEntry("Update/Delete Patient", "Patient");
         (new UpdateDeletePatient()).setVisible(true);
+        new UpdateDeleteWard();
 
     }//GEN-LAST:event_menuItemUpdDelPatActionPerformed
 
