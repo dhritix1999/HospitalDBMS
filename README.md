@@ -7,7 +7,7 @@ Our team has built a GUI for a hospital to manage the different entities in a ho
 
 ## Table of contents
 * [Description](#description)
-* [Technologies Used](#Technologies Used)
+* [Technologies Used](#Technologies)
 * [Images](#images)
 
 ## Description
