@@ -7,7 +7,7 @@ Our team has built a GUI for a hospital to manage the different entities in a ho
 
 ## Table of contents
 * [Description](#description)
-* [Installation](#install)
+* [Technologies Used](#Technologies Used)
 * [Images](#images)
 
 ## Description
@@ -25,7 +25,7 @@ Our team has built a GUI for a hospital to manage the different entities in a ho
 
 
 
-## System Tools
+## Technologies Used
 Project is created with:
 * Apache Tomcat version: 
 * Eclipse version: 
