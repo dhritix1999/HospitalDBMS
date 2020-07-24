@@ -1,9 +1,11 @@
 # HospitalDBMS
-This is our group project for the course Database Systems (CMP-320). We built a hospital database management system with the help of Java and SQL developer.
 
 We have built a simple hospital DBMS, that manages relations between the different entities in a hospital like <b>wards</b>, <b>doctors</b>, <b>patients</b> and <b>users</b>. Our database allows users to insert update and delete these entities.
 
-![Menu page]()
+![login](https://user-images.githubusercontent.com/50911194/88394817-19a00d80-cdd1-11ea-8217-f8284d2e0699.png)
+
+![menu](https://user-images.githubusercontent.com/50911194/88394827-1efd5800-cdd1-11ea-9da7-7c7c886311a7.png)
+
 
 ## Table of contents
 * [Description](#description)
@@ -30,6 +32,5 @@ Project is created with:
 * Oracle SQL developer
 
 ## Images
-
 
 
