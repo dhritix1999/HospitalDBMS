@@ -32,5 +32,8 @@ Project is created with:
 * Oracle SQL developer
 
 ## Images
+![patient](https://user-images.githubusercontent.com/50911194/88398862-07c16900-cdd7-11ea-9be9-cedd12d65f47.png)
+
+![treatment](https://user-images.githubusercontent.com/50911194/88398867-098b2c80-cdd7-11ea-9df7-cc195de24f1a.png)
 
 
